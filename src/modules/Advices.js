@@ -5,7 +5,7 @@ export default function Advices() {
     return (
         <div className="wrapper">  
       <Header />
-      <main style={{ padding: "1rem 0" }}>
+      <main className="MainWrapper">
         <h2>Advices</h2>
       </main>
       

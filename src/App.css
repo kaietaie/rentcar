@@ -1,3 +1,8 @@
+body {
+  position: relative;
+  /* padding-bottom: 120px; */
+  min-height: 100vh;
+}
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -12,6 +17,7 @@
 
 .MainWrapper {
   margin-top: 30px;
+  margin-bottom: 120px;
 }
 /* header */
 
@@ -21,7 +27,7 @@
   padding: 10px 0 0;
   max-height: 100px;
   color: #767676;
-  max-width: 1200px;
+  /* max-width: 1200px; */
 }
 .logo {
   max-height: inherit;
@@ -133,9 +139,12 @@ button a {
   justify-content: center;
   display: flex;
   flex-direction: row;
-  padding: 1.2em;
+  padding: 20px 0;
   background: #c0c0c0;
   font-size: 16px;
+  position: absolute;
+  bottom: 0;
+  
 }
 .PayInfo {
   padding: 0 15px 0 15px;

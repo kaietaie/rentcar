@@ -6,11 +6,18 @@ import Terms from './Terms';
 import Feedback from './Feedback';
 import Advices from './Advices';
 import Contacts from './Contacts';
-import Client from './Client';
+import Login from './Login';
 import firebase from 'firebase/compat/app';
 import * as firebaseui from 'firebaseui';
 import 'firebaseui/dist/firebaseui.css';
+import { initializeApp } from 'firebase/app';
 
+// TODO: Replace the following with your app's Firebase project configuration
+const firebaseConfig = {
+  //...
+};
+
+const app = initializeApp(firebaseConfig);
 
 const Header = () => {
   return (
@@ -29,7 +36,9 @@ const Header = () => {
           <br />
           Поддержка клиентов и заявки с сайта 24/7
           <br />
-          <Button size="small" variant="contained">Оформить заказ</Button>
+          <Button size="small" variant="contained">
+          Оформить заказ
+          </Button>
         </div>
         <div className="contactInfo">
           Київ: +380 11 111 11 11 <br />
@@ -39,7 +48,7 @@ const Header = () => {
         <div className="language">
           Login
           <Button size="small" variant="contained">
-          <Link to='/client' element={<Client />}>Войти</Link>
+          <Link to='/login' element={<Login />}>Войти</Link>
           </Button>
         </div>
       </div>

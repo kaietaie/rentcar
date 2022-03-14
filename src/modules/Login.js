@@ -1,12 +1,15 @@
 import Header from "./Header";
 import Footer from "./Footer";
+import Form from "./common/Form"
 
-export default function Contacts() {
+export default function Login() {
     return (
         <div className="wrapper">  
       <Header />
-      <main style={{ padding: "1rem 0" }}>
-        <h2>Contacts</h2>
+      <main className="MainWrapper">
+        
+        <Form />
+        
       </main>
       
       <Footer />
