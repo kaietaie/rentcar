@@ -1,6 +1,6 @@
-import MainCarousel from "./Carousel";
-import ShowCard from "./ShowCard";
-import MapRend from "./map/Map";
+import MainCarousel from "../components/Carousel";
+import ShowCard from "../components/ShowCard";
+import MapRend from "../map/Map";
 
 const Main = () => {
   return (

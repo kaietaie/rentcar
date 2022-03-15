@@ -2,15 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Autopark from "./modules/Autopark";
-import Terms from "./modules//Terms";
-import Feedback from "./modules//Feedback";
-import Advices from "./modules//Advices";
-import Contacts from "./modules//Contacts";
-import Login from "./modules/Login";
-import { setEmail, setPassword} from "./modules/common/FormState"
+import Autopark from "./modules/pages/Autopark";
+import Terms from "./modules/pages/Terms";
+import Feedback from "./modules/pages/Feedback";
+import Advices from "./modules/pages/Advices";
+import Contacts from "./modules/pages/Contacts";
+import Login from "./modules/pages/Login";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -22,21 +20,9 @@ ReactDOM.render(
         <Route path="feedback" element={<Feedback />} />
         <Route path="advices" element={<Advices />} />
         <Route path="contacts" element={<Contacts />} />
-        <Route
-          path="login"
-          element={<Login 
-            setEmail={setEmail} 
-            setPassword={setPassword} 
-            handleAction={() => handleAction()}
-            />}
-        />
+        <Route path="login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

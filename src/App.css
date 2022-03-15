@@ -40,12 +40,14 @@ body {
 }
 .workinghour {
   padding-right: 10px;
+  font-size: 14px;
 }
 .language {
   padding: 10px;
 }
 .contactInfo {
   padding-right: 10px;
+  font-size: 14px;
 }
 .menu {
   background: #c0c0c0;
@@ -65,7 +67,7 @@ body {
 .menuList li a {
   color: black;
   text-decoration: none;
-  border: 2px  ;
+  border: 1px solid #c0c0c0;
   border-radius: 5px;
   padding: 7px;
 }

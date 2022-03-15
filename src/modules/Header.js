@@ -1,23 +1,12 @@
 import Button from '@mui/material/Button';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Main from './Main';
-import Autopark from './Autopark';
-import Terms from './Terms';
-import Feedback from './Feedback';
-import Advices from './Advices';
-import Contacts from './Contacts';
-import Login from './Login';
-import firebase from 'firebase/compat/app';
-import * as firebaseui from 'firebaseui';
-import 'firebaseui/dist/firebaseui.css';
-import { initializeApp } from 'firebase/app';
-
-// TODO: Replace the following with your app's Firebase project configuration
-const firebaseConfig = {
-  //...
-};
-
-const app = initializeApp(firebaseConfig);
+import { Link } from 'react-router-dom';
+import Main from './pages/Main';
+import Autopark from './pages/Autopark';
+import Terms from './pages/Terms';
+import Feedback from './pages/Feedback';
+import Advices from './pages/Advices';
+import Contacts from './pages/Contacts';
+import Login from './pages/Login';
 
 const Header = () => {
   return (
@@ -46,7 +35,7 @@ const Header = () => {
           Братислава: +421 111 111 111
         </div>
         <div className="language">
-          Login
+          Login<br/>
           <Button size="small" variant="contained">
           <Link to='/login' element={<Login />}>Войти</Link>
           </Button>

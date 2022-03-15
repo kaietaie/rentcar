@@ -1,7 +1,7 @@
 import './App.css';
 import Footer from './modules/Footer';
 import Header from './modules/Header';
-import Main from './modules/Main';
+import Main from './modules/pages/Main';
 
 
 export default function App() {

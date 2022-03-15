@@ -1,12 +1,12 @@
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "../Header";
+import Footer from "../Footer";
 
-export default function Contacts() {
+export default function Advices() {
     return (
         <div className="wrapper">  
       <Header />
       <main className="MainWrapper">
-        <h2>Contacts</h2>
+        <h2>Advices</h2>
       </main>
       
       <Footer />

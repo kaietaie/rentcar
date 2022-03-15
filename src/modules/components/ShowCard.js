@@ -21,7 +21,8 @@ export default function ShowCard() {
           Skoda Fabia
         </Typography>
         <Typography variant="body2" color="text.secondary">
-        Мест 5 / Кондиционер<br/>
+        Мест 5<br/>
+        Кондиционер<br/>
         Объем багажника 225 л.<br/>
         Расход 4,5 л./100 км
         </Typography>
