@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
+import url from "../link";
 
 const mongooseConection = function () {
-  const uri = 'mongodb+srv://kaieta:t13zh92wnb@cluster0.ylhhw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+  const uri = url;
   mongoose.connect(uri.uri);
   const connection = mongoose.connection;
 
