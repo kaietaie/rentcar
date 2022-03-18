@@ -8,7 +8,7 @@
             "popular": true,
             "class" : ["econom"],
             "engine": [],
-            "transmission": ["manual", "automatic"],
+            "transmission": "manual",
             "fuel": ["diesel", "benzin"],
             "pasangers": "5",
             "options": {
@@ -78,7 +78,7 @@
           },
           "c-class": {
             "isavailable": true,
-            "popular": true,
+            "popular": false,
             "class" : ["family", "business"],
             "engine": [],
             "transmission": ["manual", "automatic"],

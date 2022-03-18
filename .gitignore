@@ -1,2 +1,8 @@
 node_modules
 node_modules
+.env
+Rentcar
+mongodb-realm
+firebase-config.js
+mongo api key.md
+firebase-config.js

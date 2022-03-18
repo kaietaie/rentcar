@@ -35,7 +35,7 @@ export default function MapRend() {
   const zoom = 17;
 
   return (
-    <Wrapper apiKey="AIzaSyDw2Y6ehX1sVe7MTXLlbcIvL6awjZKJ1Jk" render={render}>
+    <Wrapper apiKey={process.env.REACT_APP_MAP_API_KEY} render={render}>
       <MyMap center={center} zoom={zoom} >
        
       </MyMap>
