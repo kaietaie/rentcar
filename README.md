@@ -9,3 +9,5 @@ This project is longterm order from my friend. He planing to start rentcar buzin
 * Firebase Auth
 * Material UI
 * NodeJS 
+* Express
+* MongoDB + Mongoose
