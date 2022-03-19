@@ -1,4 +1,5 @@
 import express from "express";
+import cors from 'cors';
 import addCars from "./mongo.mjs";
 import "dotenv/config";
 import mongoose from "mongoose";
@@ -15,12 +16,14 @@ connection.once("open", () => {
 const port = 5000;
 const app = express();
 
-
+app.use(cors());
+app.use(express.json())
 
 app.get("/car", (req, res) => {
+    const search = req.body.name;
+    console.log(search)
     carSchema
         .find()
-        .select({_id: 0, __v: 0})
         .then( e => res.json(e))    
         .catch(err => res.status(400).json("Error" + err))
 });

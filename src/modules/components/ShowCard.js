@@ -1,13 +1,23 @@
-import * as React from 'react';
+import React, { Component } from "react";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Car from './car.component';
 
 
-export default function ShowCard() {
+export default class ShowCard extends Component  {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      search: {}
+    }
+    this.search = { name: this.props.showCar };
+  }
+  render() {
   return (
     <Card className="cardStyle" >
       <CardMedia
@@ -18,13 +28,10 @@ export default function ShowCard() {
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Skoda Fabia
+          {this.search.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-        Мест 5<br/>
-        Кондиционер<br/>
-        Объем багажника 225 л.<br/>
-        Расход 4,5 л./100 км
+        <Car car={this.search}/>
         </Typography>
       </CardContent>
       <CardActions>
@@ -33,4 +40,5 @@ export default function ShowCard() {
       
     </Card>
   );
+  }
 }

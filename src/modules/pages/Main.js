@@ -32,7 +32,9 @@ const Main = () => {
       <div>
         <h1>ПОПУЛЯРНЫЕ МАШИНЫ АВТОПРОКАТА</h1>
         <div className="carsCards">
-          <ShowCard /> <ShowCard /> <ShowCard />
+          <ShowCard showCar="Škoda Fabia"/> 
+          <ShowCard showCar="Škoda Octavia"/> 
+          <ShowCard showCar="Škoda Fabia"/>
         </div>
       </div>
 
