@@ -9,10 +9,14 @@ export default function Autopark() {
       <main className="MainWrapper">
         <h2>Autopark</h2>
         <div className="carsCards">
-          <ShowCard /> <ShowCard /> <ShowCard />
+          <ShowCard showCar="Škoda Fabia"/> 
+          <ShowCard showCar="Škoda Superb"/> 
+          <ShowCard showCar="Volkswagen Passat"/>
         </div>
         <div className="carsCards">
-          <ShowCard /> <ShowCard /> <ShowCard />
+          <ShowCard showCar="Volkswagen Golf"/>
+          <ShowCard showCar="Mercedes E-Class"/> 
+          <ShowCard showCar="Mercedes C-Class"/> 
         </div>
       </main>
       <Footer />
