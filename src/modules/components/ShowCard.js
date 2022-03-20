@@ -8,22 +8,27 @@ import Typography from '@mui/material/Typography';
 import Car from './car.component';
 
 
+
 export default class ShowCard extends Component  {
   constructor(props) {
     super(props)
 
     this.state = {
-      search: {}
+      search: {},
+      image: ""
     }
     this.search = { name: this.props.showCar };
+    this.image = `/images/${this.search.name}.png`;
+    
   }
   render() {
+    
   return (
     <Card className="cardStyle" >
       <CardMedia
         component="img"
         height="140"
-        image="/images/fabia.png"
+        image={this.image}
         alt="car rent"
       />
       <CardContent>
