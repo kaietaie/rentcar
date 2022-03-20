@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useEffect, useState } from "react";
 import cars from "./cars";
 
 // export default class Car extends Component {
@@ -32,31 +32,22 @@ import cars from "./cars";
 // render(props){
 export default function Car(props) {
   const car = props.car.name;
-  const [actualCar, setActualCars] = useState();
-  setActualCars({
-    name: car,
-    properties: {
-      isavailable: false,
-      popular: true,
-      class: [],
-      engine: "",
-      transmission: "",
-      fuel: "",
-      consumption: 0,
-      passengers: 0,
-      trunk: 0,
-      options: {
-        clima: true,
-        cruiseControle: false,
-      },
-    },
-  });
-  console.log("actual "+actualCar);
+  const [actualCar, setActualCar] = useState({});
 
-  setActualCars(cars(car));
+  useEffect(() => {
+    const fetchCars = async () => {
+      const result = await cars(car);
+      setActualCar(result);
+    };
+    fetchCars();
+  }, [car]);
+
+  if (!Object.keys(actualCar).length) {
+    return <> loading…</>;
+  }
   return (
     <>
-      Мест {actualCar?.properties?.passengers | 0} <br />
+      Мест {actualCar.properties.passengers | 0} <br />
       Кондиционер <br />
       Объем багажника {actualCar?.properties?.trunk | 0}л.
       <br />
