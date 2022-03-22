@@ -41,7 +41,7 @@ const Main = () => {
       <div>
         <p>Наши Контакты</p>
         <div id="map">
-            <MapRend />         
+            {/* <MapRend />          */}
         </div>
       </div>
     </div>

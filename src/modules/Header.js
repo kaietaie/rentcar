@@ -6,7 +6,7 @@ import Terms from './pages/Terms';
 import Feedback from './pages/Feedback';
 import Advices from './pages/Advices';
 import Contacts from './pages/Contacts';
-import Login from './pages/Login';
+import LoginHeader from './components/LoginHeader';
 
 const Header = () => {
   return (
@@ -35,10 +35,7 @@ const Header = () => {
           Братислава: +421 111 111 111
         </div>
         <div className="language">
-          Login<br/>
-          <Button size="small" variant="contained">
-          <Link to='/login' element={<Login />}>Войти</Link>
-          </Button>
+          <LoginHeader/>
         </div>
       </div>
       </div>

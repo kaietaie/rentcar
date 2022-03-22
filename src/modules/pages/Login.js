@@ -1,20 +1,13 @@
-import Header from "../Header";
-import Footer from "../Footer";
-import Singup from "../components/Singup";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { AuthProvider } from "../common/context/AuthContext";
+
+import LoginComp from "../components/LoginComp";
 
 export default function Login() {
   return (
     <div className="wrapper">
-      <Header />
       <main className="MainWrapper">
-        <AuthProvider>
-          <Singup />
-        </AuthProvider>
+        <LoginComp />
       </main>
-
-      <Footer />
     </div>
   );
 }
