@@ -19,6 +19,10 @@ const MainCarousel = () => {
             <img src="images/banner2.png" alt="carousel"/>
            
         </div>
+        <div style={styling} >
+            <img src="images/banner3.png" alt="carousel"/>
+           
+        </div>
     </Carousel>
    
     )
