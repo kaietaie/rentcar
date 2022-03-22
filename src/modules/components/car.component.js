@@ -1,78 +1,29 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import CarsDB from "./cars";
 
-export default class Car extends Component {
-  constructor(props) {
-    super(props);
+export default function Car(props) {
+  const findCar = props.car.name;
+  const [actualCar, setActualCar] = useState({});
 
-    this.state = {
-      search: {},
-      name: "",
-      properties: {
-        isavailable: false,
-        popular: true,
-        class: [],
-        engine: "",
-        transmission: "",
-        fuel: "",
-        consumption: 0,
-        pasangers: 0,
-        trunk: 0,
-        options: {
-          clima: true,
-          cruiseControle: false,
-        },
-      },
+  useEffect(() => {
+    const fetchCars = async () => {
+      const result = await CarsDB(findCar);
+      setActualCar(result);
     };
-    this.search = this.props.car
-
-  }
-
-  findCar() {
-
-    axios
-      .get("http://localhost:5000/car", this.search)
-      .then((res) => {
-        if (res) {
-          this.setState({
-            name: res.data.name,
-            
-          });
-        }
-      })
-      .then((e) => console.log(e));
-  }
-  render() {
-      
-    this.findCar()
-
-
+    fetchCars();
+  }, [findCar]);
+  if (!Object.keys(actualCar).length) {
+    return <>loading...</>;
+  } else {
     return (
       <>
-        Мест {this.state.properties.pasangers} <br />
+        Мест {actualCar.properties.passengers} <br />
         Кондиционер <br />
-        Объем багажника {this.state.properties.trunk} л.
+        Объем багажника {actualCar.properties.trunk} л.
         <br />
-        Расход {this.state.properties.consumption} л./100 км
+        Расход {actualCar.properties.consumption} л./100 км
         <br />
       </>
     );
   }
 }
-    
-
-// properties: {
-//     isavailable: res.data.properties.isavailable,
-//     popular: res.data.properties.popular,
-//     class: res.data.properties.class,
-//     engine: res.data.properties.engine,
-//     transmission: res.data.properties.transmission,
-//     fuel: res.data.properties.fuel,
-//     consumption: res.data.properties.consumption,
-//     pasangers: res.data.properties.pasangers,
-//     trunk: res.data.properties.trunk,
-//     options: {
-//       clima: res.data.properties.options.clima,
-//       cruiseControle: res.data.properties.options.cruiseControle,
-//     },
-//   },

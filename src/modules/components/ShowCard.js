@@ -18,12 +18,14 @@ export default class ShowCard extends Component  {
     this.search = { name: this.props.showCar };
   }
   render() {
+    const img = `/images/${this.search.name}.png`
+    console.log(img)
   return (
     <Card className="cardStyle" >
       <CardMedia
         component="img"
         height="140"
-        image="/images/fabia.png"
+        image={img}
         alt="car rent"
       />
       <CardContent>

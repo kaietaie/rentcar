@@ -1,21 +1,21 @@
-import Header from "../Header";
-import Footer from "../Footer";
 import ShowCard from "../components/ShowCard";
 
 export default function Autopark() {
-    return (
-        <div className="wrapper">  
-      <Header />
+  return (
+    <div className="wrapper">
       <main className="MainWrapper">
         <h2>Autopark</h2>
         <div className="carsCards">
-          <ShowCard /> <ShowCard /> <ShowCard />
+          <ShowCard showCar="Škoda Fabia" />
+          <ShowCard showCar="Škoda Superb" />
+          <ShowCard showCar="Volkswagen Passat" />
         </div>
         <div className="carsCards">
-          <ShowCard /> <ShowCard /> <ShowCard />
+          <ShowCard showCar="Volkswagen Golf" />
+          <ShowCard showCar="Mercedes E-Class" />
+          <ShowCard showCar="Mercedes C-Class" />
         </div>
       </main>
-      <Footer />
     </div>
-    );
-  }
+  );
+}

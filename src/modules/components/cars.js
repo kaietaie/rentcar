@@ -1,19 +1,9 @@
 import axios from "axios";
 
+export default async function CarsDB(car) {
+  const { data } = await axios.get("http://localhost:5000/car");
 
-
-export default async function cars(car) {
-  let result;
-  const resp = await axios.get("http://localhost:5000/car")
-  .then( res => {
-  const carArr = res.data;
- 
-  result = carArr.find((r) => r.name === car);
-  
-  
-  })
-  console.log(result)
-  return result
+  return data.find((r) => r.name === car);
 }
 
 /*
