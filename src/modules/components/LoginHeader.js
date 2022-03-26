@@ -1,27 +1,15 @@
-import React from 'react';
-import { Link } from "react-router-dom";
-import Button from "@mui/material/Button";
-import { signOut } from "firebase/auth";
-import Client from "../pages/Client";
-import Main from "../pages/Main";
+import React from "react";
+import LoginHeaderComponent from "./LoginHeaderComponent";
+import LogoutHeaderComponent from "./LogoutHeaderComponent";
+import { useAuth } from "../context/AuthContext";
 
 function LoginHeader() {
-  return (
-    <>
-    {/* {LoginComp.user.email} */}
+  const currentUser = useAuth();
+  if (!currentUser.currentUser?.email) {
+      return <LogoutHeaderComponent />;
+    } 
 
-    <Button size="small" variant="contained" style={{"marginBottom":"15px"}}>
-      <Link to="/userPage" element={<Client />}>
-        Личный кабинет
-      </Link>
-    </Button> <br/>
-    <Button size="small" variant="contained">
-      <Link to="/" onClick={() => signOut()} element={<Main />}>
-        Выйти
-      </Link>
-    </Button>
-  </>
-  )
+  return <LoginHeaderComponent />
 }
 
-export default LoginHeader
+export default LoginHeader;

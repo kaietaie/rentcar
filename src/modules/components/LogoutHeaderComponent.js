@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Login from "../pages/Login";
 
-function LoginHeader() {
+function LogoutHeaderComponent() {
 
       return (
         <>
@@ -19,4 +19,4 @@ function LoginHeader() {
 
 }
 
-export default LoginHeader;
+export default LogoutHeaderComponent;
