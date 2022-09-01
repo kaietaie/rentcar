@@ -1,8 +1,7 @@
 node_modules
-node_modules
-.env
+# .env
 Rentcar
 mongodb-realm
-firebaseconfig.js
-mongo api key.md
-link.js
+# firebaseconfig.js
+# mongo api key.md
+# link.js
