@@ -16,8 +16,8 @@ This project is longterm order from my friend. He planing to start rentcar buzin
 
 1. clone repo in your terminal with command `gh repo clone kaietaie/rentcar`
 2. `cd` into the new folder and type `npm install`
-3. to run backend-server type `npm run serverStart`
-4. to run the React project type `npm start`
+3. run backend-server type `npm run serverStart`
+4. run the React project type `npm start`
 
 ## Security files needed:
 * `.env` with Firebase data and MongoDB connection
