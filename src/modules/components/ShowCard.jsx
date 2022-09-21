@@ -40,7 +40,7 @@ export default class ShowCard extends Component  {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="midle" variant="contained">ЗАБРОНИРОВАТЬ</Button>
+        <Button size="midle" variant="contained">ЗАБРОНЮВАТИ</Button>
       </CardActions>
       
     </Card>
