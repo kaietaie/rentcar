@@ -16,7 +16,7 @@ This project is longterm order from my friend. He planing to start rentcar buzin
 
 1. clone repo in your terminal with command `gh repo clone kaietaie/rentcar`
 2. install NodeJS if you don`t have it yet
-3. `cd` into the new folder and type `npm install`
+3. `cd` into `rentcar` folder and type `npm install`
 4. run backend-server type `npm run serverStart`
 5. run the React project type `npm start`
 
