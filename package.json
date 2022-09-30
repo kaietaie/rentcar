@@ -21,6 +21,7 @@
     "formik": "^2.2.9",
     "mongodb": "^4.4.1",
     "mongoose": "^6.2.7",
+    "nodemon": "^2.0.20",
     "react": "^18.2.0",
     "react-bootstrap": "^2.2.1",
     "react-dom": "^18.2.0",
@@ -38,7 +39,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "devStart": "nodemon .src/modules/components/cars.js",
-    "serverStart": "node ./backend/server.mjs"
+    "serverStart": "nodemon ./server/server.mjs"
   },
   "eslintConfig": {
     "extends": [

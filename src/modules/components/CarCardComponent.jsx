@@ -17,11 +17,11 @@ export default function Car(props) {
   } else {
     return (
       <>
-        Мест {actualCar.properties.passengers} <br />
-        Кондиционер <br />
-        Объем багажника {actualCar.properties.trunk} л.
+        Місць {actualCar.properties.passengers} <br />
+        Кондиціонер {actualCar.properties.options.clima ? "є" : "немає"}<br />
+        Об'єм багажника {actualCar.properties.trunk} л
         <br />
-        Расход {actualCar.properties.consumption} л./100 км
+        Витрата пального {actualCar.properties.consumption} л/100 км
         <br />
       </>
     );

@@ -1,9 +1,9 @@
 import express from "express";
 import cors from "cors";
-import addCars from "./mongo.mjs";
 import "dotenv/config";
 import mongoose from "mongoose";
-import carSchema from "./carSchema.mjs";
+import { getCars, postCars } from "./routes/cars.mjs";
+
 
 const port = 5000;
 const app = express();
@@ -19,16 +19,9 @@ connection.once("open", () => {
   console.log("mongoDB connection established successfully");
 });
 
-app.get("/car", (req, res) => {
-  carSchema
-    .find()
-    .then((cars) => res.json(cars))
-    .catch((err) => res.status(400).json("Error" + err));
-});
+app.get("/cars", getCars);
 
-app.post("/car", (req, res) => {
-  res.send(addCars());
-});
+app.post("/cars", postCars);
 
 app.listen(port, () => {
   console.log(`Server is working on localhost:${port}`);

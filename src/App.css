@@ -116,14 +116,14 @@ button a {
   width: 450px;
   
 }
+
+/* Cards */
 .carsCards {
   display: flex;
   flex-direction: row;
   justify-content: center;
   text-align: left;
 }
-
-/* Cards */
 .cardStyle {
   max-width: 25%;
   border: 2px solid #767676;
