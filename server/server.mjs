@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import "dotenv/config";
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 // import { getCars, postCars } from "./routes/cars.mjs";
 import { carsrouter } from "./routes/cars.routes.mjs";
 

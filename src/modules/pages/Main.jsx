@@ -34,9 +34,9 @@ const Main = () => {
       <div>
         <h1>ПОПУЛЯРНЫЕ МАШИНЫ АВТОПРОКАТА</h1>
         <div className="carsCards">
-          <ShowCard showCar="Škoda Fabia"/> 
-          <ShowCard showCar="Škoda Superb"/> 
-          <ShowCard showCar="Volkswagen Golf"/>
+          <ShowCard showCar="Fabia"/> 
+          <ShowCard showCar="Superb"/> 
+          <ShowCard showCar="Golf"/>
         </div>
       </div>
 
