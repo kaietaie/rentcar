@@ -16,7 +16,6 @@ export default class ShowCard extends Component  {
     this.state = {
       search: {},
     }
-    //this.param = this.props.
     this.search = { name: this.props.showCar };
   }
   render() {

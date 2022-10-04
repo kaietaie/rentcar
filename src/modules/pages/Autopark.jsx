@@ -6,16 +6,19 @@ export default function Autopark() {
     <div className="wrapper">
       <main className="MainWrapper">
         <h2>Autopark</h2>
-        <div className="carsCards">
+         <div className="carsCards">
           <ShowCard showCar="Golf"/> 
           <ShowCard showCar="Fabia"/> 
           <ShowCard showCar="C-Class"/>
-        </div>
-        <div className="carsCards">
+          {/* <ShowCard showCar="Passat"/> */}
+          <ShowCard showCar="Superb"/> 
+          <ShowCard showCar="E-Class"/> 
+        </div> 
+        {/* <div className="carsCards">
           <ShowCard showCar="Passat"/>
           <ShowCard showCar="Superb"/> 
           <ShowCard showCar="E-Class"/> 
-        </div>
+        </div> */}
       </main>
     </div>
   );

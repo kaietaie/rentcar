@@ -10,7 +10,8 @@ This project is longterm order from my friend. He planing to start rentcar buzin
 * Material UI
 * NodeJS 
 * Express
-* MongoDB + Mongoose
+* PostgreSQL
+* MongoDB + Mongoose // commented, not used
 
 ### How to start project?
 
@@ -20,9 +21,23 @@ This project is longterm order from my friend. He planing to start rentcar buzin
 4. run backend-server type `npm run serverStart`
 5. run the React project type `npm start`
 
-## Security files needed:
-This files should be in root folder. And looks like this: 
-* `.env` with Firebase data and MongoDB connection
+### Install PostgreSQL
+1. Download installation from official website [https://www.postgresql.org/download](https://www.postgresql.org/download/)
+2. Create user and database
+    * `su - postgres`
+    * `psql` go into PostgreSQL terminal
+    * `\password postgres` to make password for user postgres
+    * `CREATE USER kaieta WITH PASSWORD 'kaieta';` create new user
+    * `CREATE DATABASE carrentdb OWNER kaieta;` create new database
+    * `\quit` for exit
+3. Execute files with SQL script for creating DB and adding data (files located in /server/postgres/)
+    1. `sudo psql -U kaieta -d carrentdb -a -f create.sql`
+    2. `sudo psql -U kaieta -d carrentdb -a -f addcarstodb.sql`
+4. Install dependencies (include `pg` module for working with PostgreSQL) `npm i`
+
+## Security file needed:
+This file should be in root folder. And looks like this: 
+* `.env` with Firebase data
 
 ```
     REACT_APP_FIREBASE_API_KEY=
@@ -33,17 +48,6 @@ This files should be in root folder. And looks like this:
     REACT_APP_FIREBASE_APP_ID=
     REACT_APP_FIREBASE_MEASUREMENT_ID=
     REACT_APP_MAP_API_KEY=
-    EXPRESS_NODE_ATLAS_URI=
 ```
 
-* `mongo api key.md` with MongoDB keys
-
-```
-    ## Public Key
-    your key here
-    
-    ## Private Key
-    your key here
-```
-
-To get new keys you should make new project in Firebase and MongoDB 
+To get new keys you should make new project in Firebase
