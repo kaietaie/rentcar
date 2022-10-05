@@ -22,7 +22,7 @@ This project is longterm order from my friend. He planing to start rentcar buzin
 
 ## Security files needed:
 This files should be in root folder. And looks like this: 
-* `.env` with Firebase data and MongoDB connection
+* `.env` with Firebase data connection
 
 ```
     REACT_APP_FIREBASE_API_KEY=
@@ -36,14 +36,4 @@ This files should be in root folder. And looks like this:
     EXPRESS_NODE_ATLAS_URI=
 ```
 
-* `mongo api key.md` with MongoDB keys
-
-```
-    ## Public Key
-    your key here
-    
-    ## Private Key
-    your key here
-```
-
-To get new keys you should make new project in Firebase and MongoDB 
+To get new keys you should make new project in Firebase
