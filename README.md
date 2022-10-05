@@ -37,7 +37,7 @@ This project is longterm order from my friend. He planing to start rentcar buzin
 
 ## Security file needed:
 This file should be in root folder. And looks like this: 
-* `.env` with Firebase data
+* `.env` with Firebase data connection
 
 ```
     REACT_APP_FIREBASE_API_KEY=
