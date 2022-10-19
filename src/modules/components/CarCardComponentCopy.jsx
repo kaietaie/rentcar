@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import CarGetOne from "./CarGetOneComponent";
+import  CarGetOne  from "./dbConnect/CarGetOneComponent";
 
 export default function Car(props) {
   const findCar = props.car.name;

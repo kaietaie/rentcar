@@ -3,6 +3,7 @@ body {
   /* padding-bottom: 120px; */
   min-height: 100vh;
 }
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -19,6 +20,7 @@ body {
   margin-bottom: 120px;
   padding-bottom: 30px;
 }
+
 /* header */
 
 .header {
@@ -28,42 +30,51 @@ body {
   max-height: 100px;
   color: #767676;
 }
+
 .logo {
   max-height: inherit;
   flex: 30%;
 }
+
 .bacisInfo {
   display: flex;
   flex-direction: row;
   flex: 80%;
 }
+
 .workinghour {
   padding-right: 10px;
   font-size: 14px;
 }
+
 .language {
   padding: 10px;
 }
+
 .contactInfo {
   padding-right: 10px;
   font-size: 14px;
 }
+
 .menu {
   background: #c0c0c0;
   margin: 10px 0;
   max-width: 100%;
 }
+
 .menuList {
   width: 100vh;
   padding: 15px;
-  text-transform : uppercase;
+  text-transform: uppercase;
   list-style-type: none;
 }
+
 .menuList li {
   display: inline;
-  margin: 15px ;
+  margin: 15px;
 
 }
+
 .menuList li a {
   color: black;
   text-decoration: none;
@@ -71,27 +82,29 @@ body {
   border-radius: 5px;
   padding: 7px;
 }
+
 .menuList li a:hover {
   border: 1px solid #1976D2;
   border-radius: 5px;
-  background-color: #1976D2 ;
+  background-color: #1976D2;
   padding: 7px;
   color: white;
   transition-duration: 0.4s;
 }
+
 button a {
-  text-transform : uppercase;
+  text-transform: uppercase;
   text-decoration: none;
   color: white;
 }
 
 /* Main */
 .mainBoard {
-  background-image: url("./images/roadtrip.jpeg") ;
+  background-image: url("./images/roadtrip.jpeg");
   background-size: 100%;
   background-repeat: no-repeat;
-  display:flex;
-  flex-direction: row; 
+  display: flex;
+  flex-direction: row;
   min-height: 400px;
 }
 
@@ -107,14 +120,16 @@ button a {
   background-color: rgba(255, 255, 255, 0.4);
   margin: 5%;
 }
+
 .rezervation {
   margin: 5%;
   color: #000000;
   background-color: rgba(255, 255, 255, 0.4);
 }
+
 .carousel {
   width: 450px;
-  
+
 }
 
 /* Cards */
@@ -124,11 +139,13 @@ button a {
   justify-content: center;
   text-align: left;
 }
+
 .cardStyle {
   max-width: 30%;
   border: 2px solid #767676;
   margin: 20px;
 }
+
 .cardStyle:hover {
   transform: scale(1.1);
 }
@@ -145,17 +162,30 @@ button a {
   font-size: 16px;
   position: absolute;
   bottom: 0;
-  
+
 }
+
 .PayInfo {
   padding: 0 15px 0 15px;
 }
+
 .PayInfo img {
   max-width: 50px;
 }
+
 .CallBack {
   padding: 0 15px 0 15px;
 }
+
 .ContactNumbers {
   padding: 0 15px 0 15px;
 }
+
+/* Add Car Componetn */
+/* .carAddAdmin {
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+} */

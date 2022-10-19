@@ -2,15 +2,33 @@ import { pool } from "./dbConnectComponent.mjs";
 
 class DBController {
   async createCar(req, res) {
-    const sql = await pool.query(
+    const a = req.body.fuel
+    console.log(typeof a , a);
+    await pool.query(
       `INSERT INTO Cars ( 
-       Model, Brand, Engine, Transmission, Fuel, Consumption, Trunk, Class, Seats, Clima, Cruise, Available )
+       Brand, Model, Engine, Transmission, Fuel, Consumption, Trunk, Class, Seats, Clima, Cruise, Available )
        VALUES
-       ('Fabia', 'Skoda', '1.4 TDI, 66kW', '1', '1', '4.7', '330', '1', '5', '1', '2', '1'),`,
-      [req.body.name, req.body.secondname]
+       ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);`,
+      [
+        req.body.brand,
+        req.body.model,
+        req.body.engine,
+        Number(req.body.transmission),
+        Number(req.body.fuel),
+        Number(req.body.consumption),
+        Number(req.body.trunk),
+        Number(req.body.class),
+        Number(req.body.seats),
+        Number(req.body.clima),
+        Number(req.body.cruise),
+        Number(req.body.available),
+      ],
+      (err, result) => {
+        if( err ) console.log(err.message); 
+        res.status(201).send(`New car was added with ID: ${result}`)
+      }
     );
 
-    res.json(sql.rows);
   }
   async getCars(req, res) {
     const sql = `SELECT Cars.brand, Cars.model, Cars.Engine, Transmission.Transmission, Fuel.Fuel  

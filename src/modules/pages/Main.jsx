@@ -34,8 +34,8 @@ const Main = () => {
       <div>
         <h1>ПОПУЛЯРНЫЕ МАШИНЫ АВТОПРОКАТА</h1>
         <div className="carsCards">
+          <ShowCard showCar="E-Class"/> 
           <ShowCard showCar="Fabia"/> 
-          <ShowCard showCar="Superb"/> 
           <ShowCard showCar="Golf"/>
         </div>
       </div>
