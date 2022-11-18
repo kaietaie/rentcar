@@ -24,7 +24,7 @@ This project is longterm order from my friend. He planing to start rentcar buzin
 ### Install PostgreSQL
 1. Download installation from official website [https://www.postgresql.org/download](https://www.postgresql.org/download/)
 2. Create user and database
-    * `sudo su - postgres`
+    * `sudo su - postgres` - login postgres user
     * `psql` go into PostgreSQL terminal
     * `\password postgres` to make password for user postgres
     * `CREATE USER kaieta WITH PASSWORD 'kaieta';` create new user
