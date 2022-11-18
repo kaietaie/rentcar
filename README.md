@@ -24,15 +24,15 @@ This project is longterm order from my friend. He planing to start rentcar buzin
 ### Install PostgreSQL
 1. Download installation from official website [https://www.postgresql.org/download](https://www.postgresql.org/download/)
 2. Create user and database
-    * `su - postgres`
+    * `sudo su - postgres`
     * `psql` go into PostgreSQL terminal
     * `\password postgres` to make password for user postgres
     * `CREATE USER kaieta WITH PASSWORD 'kaieta';` create new user
     * `CREATE DATABASE carrentdb OWNER kaieta;` create new database
     * `\quit` for exit
 3. Execute files with SQL script for creating DB and adding data (files located in /server/postgres/)
-    1. `sudo psql -U kaieta -d carrentdb -a -f create.sql`
-    2. `sudo psql -U kaieta -d carrentdb -a -f addcarstodb.sql`
+    1. `sudo psql -U kaieta -d carrentdb -a -f /server/postgres/create.sql`
+    2. `sudo psql -U kaieta -d carrentdb -a -f /server/postgres/addcarstodb.sql`
 4. Install dependencies (include `pg` module for working with PostgreSQL) `npm i`
 
 ## Security file needed:
