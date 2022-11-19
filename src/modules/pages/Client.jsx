@@ -1,10 +1,11 @@
 import React from 'react';
 
+
 export default function Client() {
   return (
     <div className="wrapper">
       <main className="MainWrapper">
-        <h2>Client</h2>
+        <h2>Hello, </h2>
         <div>
         кабинет клиента, для просмотра своего заказа (данные по автомобилю, количество 
   оставшихся дней, место сдачи авто, сколько было оплачено, какие доп.услуги были 

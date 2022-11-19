@@ -7,7 +7,7 @@ import Terms from './pages/Terms';
 import Feedback from './pages/Feedback';
 import Advices from './pages/Advices';
 import Contacts from './pages/Contacts';
-import LoginHeader from './components/LoginHeader';
+import LoginHeader from './components/Login/LoginHeader';
 
 const Header = () => {
   return (

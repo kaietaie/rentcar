@@ -2,38 +2,45 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  sendEmailVerification,
 } from "firebase/auth";
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import { auth } from "../common/firebaseconfig";
-import { useAuth } from "../context/AuthContext";
+import { auth } from "../../common/firebaseconfig";
+// import { AuthProvider } from "../../context/AuthContext"; - not worked
 
 export default function LoginComp() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPass, setLoginPass] = useState("");
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState();
 
   let navigate = useNavigate();
 
   onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
+    try {
+      setUser(currentUser);
+      
+    } catch (error) {
+      throw error
+    }
+    
   });
 
-  const register = async () => {
+  const register = 
+  // AuthProvider.signup(loginEmail, loginPass) - not worked
+  async () => {
     try {
-      user = await createUserWithEmailAndPassword(auth, loginEmail, loginPass);
+      await createUserWithEmailAndPassword(auth, loginEmail, loginPass);
+      await sendEmailVerification();
+      navigate("/user-page");
     } catch (error) {
       console.error(error.message);
     }
   };
   const login = async () => {
     try {
-      const user = await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPass
-      );
+      await signInWithEmailAndPassword(auth, loginEmail, loginPass);
       navigate("/user-page");
     } catch (error) {
       console.error(error.message);
@@ -42,13 +49,18 @@ export default function LoginComp() {
   return (
     <>
       <input
-        placeholder="Email..."
-        type="email"
-        onChange={(ev) => {
-          setLoginEmail(ev.target.value);
-        }}
-        required
-      />
+      placeholder="Name..."
+      type="name"
+      id="name"
+    />
+    <input
+      placeholder="Email..."
+      type="email"
+      onChange={(ev) => {
+        setLoginEmail(ev.target.value);
+      }}
+      required
+    />
       <input
         placeholder="Password..."
         type="password"

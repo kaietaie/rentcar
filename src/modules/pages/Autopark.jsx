@@ -1,5 +1,5 @@
 import React from 'react';
-import ShowCard from "../components/ShowCard";
+import ShowCard from "../components/CarCards/ShowCard";
 
 export default function Autopark() {
   return (

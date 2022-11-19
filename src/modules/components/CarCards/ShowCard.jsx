@@ -25,7 +25,7 @@ export default class ShowCard extends Component  {
       <CardMedia
         component="img"
         height="140"
-        image={require(`../../images/${this.search.name}.png`)}
+        image={require(`../../../images/${this.search.name}.png`)}
         alt="car rent"
       />
       <CardContent>
