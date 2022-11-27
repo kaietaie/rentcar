@@ -22,12 +22,12 @@ const Header = () => {
       </div>
       <div className="bacisInfo">
         <div className="workinghour">
-          ПН - ВС: 9:00 до 19:00, СБ - ВС: по запросу
+          ПН - ПТ: 9:00 до 19:00, СБ - НД: по запиту
           <br />
-          Поддержка клиентов и заявки с сайта 24/7
+          Підтримка клієнтів і замовлення онлайн 24/7
           <br />
           <Button size="small" variant="contained">
-          Оформить заказ
+          Замовити
           </Button>
         </div>
         <div className="contactInfo">
@@ -43,12 +43,12 @@ const Header = () => {
       <div className="menu">
         <ul className="menuList">
           
-            <li><Link to='/' element={<Main />}>Главная</Link></li>
+            <li><Link to='/' element={<Main />}>Головна</Link></li>
             <li><Link to='/autopark' element={<Autopark />}>Автопарк</Link></li>
-            <li><Link to='/terms' element={<Terms />}>Условия</Link></li>
-            <li><Link to='/feedback' element={<Feedback />}>Отзывы</Link></li>
-            <li><Link to='/advices' element={<Advices />}>Советы</Link></li>
-            <li><Link to='/contacts' element={<Contacts />}>Контакты</Link></li>
+            <li><Link to='/terms' element={<Terms />}>Умови</Link></li>
+            <li><Link to='/feedback' element={<Feedback />}>Відгуки</Link></li>
+            <li><Link to='/advices' element={<Advices />}>Поради</Link></li>
+            <li><Link to='/contacts' element={<Contacts />}>Контакти</Link></li>
         
         </ul>
       </div>

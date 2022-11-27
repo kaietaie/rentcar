@@ -1,8 +1,3 @@
-INSERT INTO Boolen
-VALUES 
-(1, 'TRUE'),
-(2, 'FALSE');
-
 INSERT INTO Fuel
 VALUES 
 (1, 'Diesel'),
@@ -20,18 +15,18 @@ VALUES
 
 INSERT INTO Clima
 VALUES 
-(1, 1),
-(2, 2);
+(1, True),
+(2, False);
 
 INSERT INTO Cruise
 VALUES 
-(1, 1),
-(2, 2);
+(1, True),
+(2, False);
 
 INSERT INTO Available
 VALUES 
-(1, 1),
-(2, 2);
+(1, True),
+(2, False);
 
 INSERT INTO Cars ( Model, Brand, Engine, Transmission, Fuel, Consumption, Trunk, Class, Seats, Clima, Cruise, Available )
 VALUES
