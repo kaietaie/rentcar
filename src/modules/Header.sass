@@ -7,19 +7,15 @@ header
 
 .header
   display: flex
-  flex-direction: row
-  padding: 10px 0 0
-  max-height: 100px
+  padding: 10px 10px 0
   color: #767676
+  justify-content: space-around
 
 .logo
-  max-height: inherit
-  flex: 30%
+  max-height: 100px
 
 .bacisInfo
   display: flex
-  flex-direction: row
-  flex: 80%
 
 .workinghour
   padding-right: 10px
@@ -38,10 +34,13 @@ header
   max-width: 100%
 
 .menuList
-  width: 100vh
+  align-items: center
+  display: flex
+  justify-content: space-around
+  max-width: 100vh
   padding: 15px
   text-transform : uppercase
-  list-style-type: none
+  height: 50px
 
 .menuList--mobile
   a
@@ -51,7 +50,6 @@ header
 
 .menuList li
   display: inline
-  margin: 15px
 
 .menuList
   li
