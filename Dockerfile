@@ -10,5 +10,5 @@ RUN npm install
 
 EXPOSE 8080 3000 80 443 25060
 
-ENTRYPOINT ["npm", "run", "serverStart"]
-CMD ["npm", "start"]
+#ENTRYPOINT ["npm", "run", "serverStart"]
+CMD ["/bin/sh", "entrypoint.sh"]
