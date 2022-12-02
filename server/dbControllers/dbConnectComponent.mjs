@@ -2,7 +2,7 @@ import pkg from 'pg';
 const { Pool } = pkg;
 
 export const pool = new Pool({
-    host: process.env.POSTGRES_HOST,
+    host: process.env.HOST,
     port: 5432,
     database: 'carrentdb',
     user: process.env.POSTGRES_USER,
