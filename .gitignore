@@ -1,3 +1,5 @@
 node_modules
 .env
 mongo api key.md
+.idea/
+
