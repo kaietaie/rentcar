@@ -13,3 +13,4 @@ const LoginHeader = ({ isMobile }) => {
     );
 };
 
+export default LoginHeader;
