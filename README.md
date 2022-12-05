@@ -8,7 +8,7 @@ This is the website of rent car company
 * Express
 * React
 * React Router
-* Google Maps
+* PostgreSQL
 * Firebase Auth
 * Google Maps
 * Material UI
