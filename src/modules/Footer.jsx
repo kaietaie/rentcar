@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div className="FooterWrapper fixed-footer" >
       <div className="PayInfo" >
-        Спосіб платежу:
+        Способы оплаты:
         <br />
         <img
           className="FooterPayment"
@@ -19,10 +19,10 @@ const Footer = () => {
         ></img>
       </div>
       <div className="CallBack">
-      <Button className="callback" size="midle" variant="contained">Замовити виклик</Button>
+      <Button className="callback" size="midle" variant="contained">Заказать звонок</Button>
       <br />
       <br />
-      <h4>Made by  Ievgenii Kaieta & team</h4>
+      <h4>Made by  Ievgenii Kaieta</h4>
       </div>
       <div
         id="contact"

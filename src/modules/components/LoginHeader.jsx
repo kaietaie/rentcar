@@ -3,7 +3,7 @@ import LoginHeaderComponent from "./LoginHeaderComponent";
 import LogoutHeaderComponent from "./LogoutHeaderComponent";
 import { useAuth } from "../context/AuthContext";
 
-export default function LoginHeader() {
+function LoginHeader() {
   const currentUser = useAuth();
   if (!currentUser.currentUser?.email) {
       return <LogoutHeaderComponent />
@@ -11,3 +11,5 @@ export default function LoginHeader() {
 
   return <LoginHeaderComponent />
 }
+
+export default LoginHeader;

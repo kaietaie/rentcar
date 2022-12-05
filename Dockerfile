@@ -8,7 +8,7 @@ COPY . /app
 
 RUN npm install
 
-EXPOSE 8080 3000 80 443 25060 5000
+EXPOSE 8080 3000 80 443
 
-#ENTRYPOINT ["npm", "run", "serverStart"]
-CMD ["/bin/sh", "entrypoint.sh"]
+#CMD ["npm", "run", "serverStart"]
+CMD ["npm", "start"]

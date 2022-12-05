@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import CarsDB from "./CarsAPI";
+import CarsDB from "./cars";
 
 export default function Car(props) {
   const findCar = props.car.name;
@@ -8,21 +8,20 @@ export default function Car(props) {
   useEffect(() => {
     const fetchCars = async () => {
       const result = await CarsDB(findCar);
-      return setActualCar(result[0]);
+      setActualCar(result);
     };
     fetchCars();
   }, [findCar]);
-  const clima =  actualCar.clima === true ? "Є кондиціонер" : "Без кондиціонеру";
   if (!Object.keys(actualCar).length) {
     return <>loading...</>;
   } else {
     return (
       <>
-        Кількість місць {actualCar.seats} <br />
-        { clima }<br />
-        Об'ієм багажника {actualCar.trunk} л.
+        Мест {actualCar.properties.passengers} <br />
+        Кондиционер <br />
+        Объем багажника {actualCar.properties.trunk} л.
         <br />
-        Витрата палива {actualCar.consumption} л./100 км
+        Расход {actualCar.properties.consumption} л./100 км
         <br />
       </>
     );
