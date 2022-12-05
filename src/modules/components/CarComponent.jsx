@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CarsDB from "./CarsAPI";
+import CarsDB from "./CarsAPI";
 
 export default function Car(props) {
   const findCar = props.car.name;
@@ -8,7 +9,7 @@ export default function Car(props) {
   useEffect(() => {
     const fetchCars = async () => {
       const result = await CarsDB(findCar);
-      setActualCar(result);
+      return setActualCar(result[0]);
     };
     fetchCars();
   }, [findCar]);
