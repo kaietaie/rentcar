@@ -3,7 +3,7 @@ import cors from "cors";
 import "dotenv/config";
 import { carsrouter } from "./routes/cars.routes.mjs";
 
-const host = process.env.HOST || "localhost";
+const host = process.env.HOST;
 const port = process.env.PORT || 5000;
 const app = express();
 

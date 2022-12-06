@@ -12,17 +12,17 @@ export default function Car(props) {
     };
     fetchCars();
   }, [findCar]);
-  const clima =  actualCar[0]?.clima === true ? "Є кондиціонер" : "Без кондиціонеру";
+  const clima =  actualCar.clima === true ? "Є кондиціонер" : "Без кондиціонеру";
   if (!Object.keys(actualCar).length) {
     return <>loading...</>;
   } else {
     return (
       <>
-        Кількість місць {actualCar[0].seats} <br />
+        Кількість місць {actualCar.seats} <br />
         { clima }<br />
-        Об'ієм багажника {actualCar[0].trunk} л.
+        Об'ієм багажника {actualCar.trunk} л.
         <br />
-        Витрата палива {actualCar[0].consumption} л./100 км
+        Витрата палива {actualCar.consumption} л./100 км
         <br />
       </>
     );
