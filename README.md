@@ -50,6 +50,12 @@ This files should be in root folder. And looks like this:
     REACT_APP_FIREBASE_APP_ID=
     REACT_APP_FIREBASE_MEASUREMENT_ID=
     REACT_APP_MAP_API_KEY=
+    HOST=
+    PORT=
+    POSTGRES_PORT=
+    POSTGRES_DB=
+    POSTGRES_USER=
+    POSTGRES_PASS=
 ```
 
 To get new keys you should make new project in Firebase

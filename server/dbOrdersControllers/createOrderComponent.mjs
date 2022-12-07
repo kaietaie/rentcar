@@ -1,14 +1,16 @@
 import { pool } from "../dbConnectComponent.mjs";
 
 export default async function createCar(req, res) {
+  const a = req.body.fuel
+
   await pool.query(
     `INSERT INTO Cars ( 
      Brand, Model, Engine, Transmission, Fuel, Consumption, Trunk, Class, Seats, Clima, Cruise, Available )
      VALUES
      ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);`,
     [
-      req.body.brand,
-      req.body.model,
+      req.body.name,
+      req.body.surname,
       req.body.engine,
       Number(req.body.transmission),
       Number(req.body.fuel),
@@ -26,4 +28,3 @@ export default async function createCar(req, res) {
     }
   );
 }
-// Можна винести функцію інсурту(та іншихв другий компонентах), щоб не писати їх в замовленням

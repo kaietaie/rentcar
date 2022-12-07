@@ -11,7 +11,7 @@ export const carsrouter = new Router();
 carsrouter.post('/cars', createCar)
 carsrouter.get('/cars', getCars)
 carsrouter.get('/cars/:model', getOneCar)
-carsrouter.put('/cars/:model', updateCar)
+carsrouter.put('/cars/', updateCar)
 carsrouter.delete('/cars/:model', deleteCar)
 
 

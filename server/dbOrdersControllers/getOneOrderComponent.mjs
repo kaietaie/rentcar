@@ -1,4 +1,4 @@
-import { pool } from "../dbConnectComponent.mjs";
+import { pool } from "./dbConnectComponent.mjs";
 
 export default async function getOneCars(req, res) {
   const model = req.params.model;
