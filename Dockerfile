@@ -6,7 +6,7 @@ WORKDIR /app
 COPY package.json /app
 COPY . /app
 
-RUN npm install ; npm install @mui/icons-material ; npm install sass
+RUN npm install
 
 EXPOSE 8080 3000 80 443 25060 5000
 

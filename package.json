@@ -6,6 +6,7 @@
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@googlemaps/react-wrapper": "^1.1.25",
+    "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.4.1",
     "@react-google-maps/api": "^2.7.0",
     "@testing-library/jest-dom": "^5.16.5",
@@ -30,6 +31,7 @@
     "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.1",
     "realm": "^10.13.0",
+    "sass": "^1.56.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
