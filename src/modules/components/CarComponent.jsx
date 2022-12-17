@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import CarsDB from "./cars";
+import CarsDB from "./CarsAPI";
 
 export default function Car(props) {
   const findCar = props.car.name;
@@ -17,11 +17,11 @@ export default function Car(props) {
   } else {
     return (
       <>
-        Мест {actualCar.properties.passengers} <br />
+        Мест {actualCar[0].seats} <br />
         Кондиционер <br />
-        Объем багажника {actualCar.properties.trunk} л.
+        Объем багажника {actualCar[0].trunk} л.
         <br />
-        Расход {actualCar.properties.consumption} л./100 км
+        Расход {actualCar[0].consumption} л./100 км
         <br />
       </>
     );
