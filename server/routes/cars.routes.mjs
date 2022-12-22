@@ -5,14 +5,14 @@ import updateCar from "../dbCarControllers/updateCarComponent.mjs";
 import getCars from '../dbCarControllers/getCarsComponent.mjs';
 import getOneCar from '../dbCarControllers/getOneCarComponent.mjs';
 
-export const carsrouter = new Router();
+export const carsRouter = new Router();
 
 
-carsrouter.post('/cars', createCar)
-carsrouter.get('/cars', getCars)
-carsrouter.get('/cars/:model', getOneCar)
-carsrouter.put('/cars/', updateCar)
-carsrouter.delete('/cars/:model', deleteCar)
+carsRouter.post('/cars', createCar)
+carsRouter.get('/cars', getCars)
+carsRouter.get('/cars/:model', getOneCar)
+carsRouter.put('/cars/', updateCar)
+carsRouter.delete('/cars/:model', deleteCar)
 
 
 
