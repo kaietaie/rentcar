@@ -2,6 +2,7 @@ import { pool } from "../dbConnectComponent.mjs";
 import bcrypt from "bcrypt";
 import getUser from "./functions/getUser.mjs";
 import { validationResult } from "express-validator";
+import { authorityList } from "../config/authorityList.js";
 
 export default async function registrationUser(req, res) {
   try {
@@ -20,12 +21,12 @@ export default async function registrationUser(req, res) {
     }
 
     const hashPass = await bcrypt.hash(userPass, 5);
-    const authority = "user";
+    
     await pool.query(
       `INSERT INTO Users ( UserName, useremail, userpassword, authority )
       VALUES
       ($1, $2, $3, $4);`,
-      [userName, userEmail, hashPass, authority],
+      [userName, userEmail, hashPass, authorityList.Holder],
       (err, result) => {
         if (err) return res.status(400).json({ ERROR: "Something goes wrong", err });
         res.status(201).send(`New user was added`);

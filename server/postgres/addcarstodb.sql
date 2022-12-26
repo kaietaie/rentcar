@@ -1,3 +1,9 @@
+INSERT INTO users (username, userpassword, userEmail, authority, refreshtoken, Enabled)           
+VALUES
+('john Doe', '$2b$05$s.w.MDnH8vHZdQv/aTl//.K5ULFwlA5D9tlxgaylJdp240tx/ONX2', 'doe@gss.com', 5150, '', 1),
+('Ammy Smith', '$2b$05$xGrzeOJodwMQpi0tSI3mK.rdxFzReaZZuDUnq9bnOfb.07RQqsv0O', 'asmith@gss.com', 2001, '', 1),
+('Radzhash Smith', '$2b$05$ICBon8YNe6O7dX58q06htu74Ff6W02v5a/oxoUw/Rn2E1lNaIr7wy', 'radsmith@gss.com', 1984, '', 1);
+
 INSERT INTO Fuel
 VALUES 
 (1, 'Diesel'),

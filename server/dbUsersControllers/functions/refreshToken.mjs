@@ -11,12 +11,13 @@ export default async function handleRefreshToken(req, res) {
   if (!user) return res.sendStatus(403);
 
   jwt.verify(refreshToken, process.env.REFRESHKEY, (error, decoded) => {
-    if (error || user.name !== decoded.username) return res.sendStatus(403);
+    if (error || user.username !== decoded.name) return res.sendStatus(403);
     const accessToken = jwt.sign(
-      { username: decoded.username, authority: decoded.authority },
+      { username: decoded.name, authority: decoded.authority },
       process.env.ACCESSKEY,
       { expiresIn: "30m" }
     );
+    console.log(decoded)
     res.json({ accessToken });
   });
 }

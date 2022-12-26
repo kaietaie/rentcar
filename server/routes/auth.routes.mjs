@@ -6,6 +6,8 @@ import deleteUser from "../dbUsersControllers/deleteUserComponent.mjs";
 import { body } from "express-validator";
 import readUser from "../dbUsersControllers/readUserComponent.mjs";
 import verifyJWT from "../middleware/verifyJWT.js";
+import { verifyAuthority } from "../middleware/verifyAuthority.js";
+import { authorityList } from "../config/authorityList.js";
 
 export const authRouter = new Router();
 
@@ -27,5 +29,5 @@ authRouter.post(
   loginUser
 );
 authRouter.get("/read", readUser);
-authRouter.put("/update", verifyJWT, updateUser);
-authRouter.delete("/delete/", verifyJWT, deleteUser);
+authRouter.put("/update", verifyJWT, verifyAuthority(authorityList.Admin), updateUser);
+authRouter.delete("/delete/", verifyJWT, verifyAuthority(authorityList.Admin), deleteUser);
