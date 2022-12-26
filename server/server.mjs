@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import { carsRouter } from "./routes/cars.routes.mjs";
 import { authRouter } from "./routes/auth.routes.mjs";
 import { refreshRouter } from "./routes/refresh.routes.mjs";
+import { logoutRouter } from "./routes/logout.routes.mjs";
 
 
 const host = process.env.HOST || "localhost";
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use('/apicars', carsRouter);
 app.use('/auth', authRouter);
 app.use('/refresh', refreshRouter);
+app.use('/logout', logoutRouter );
 
 app.listen(port, () => {
   console.log(`Server is working on ${host}:${port}`);
