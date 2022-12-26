@@ -3,20 +3,29 @@ import registrationUser from "../dbUsersControllers/registrationUserComponent.mj
 import loginUser from "../dbUsersControllers/loginUserComponent.mjs";
 import updateUser from "../dbUsersControllers/updateUserComponent.mjs";
 import deleteUser from "../dbUsersControllers/deleteUserComponent.mjs";
-import {body} from "express-validator";
+import { body } from "express-validator";
 import readUser from "../dbUsersControllers/readUserComponent.mjs";
+import verifyJWT from "../middleware/verifyJWT.js";
 
 export const authRouter = new Router();
 
-authRouter.post('/registration', [
-    body('userName', 'Name cannot be empty').notEmpty(),
-    body('userEmail', 'Should be email').isEmail().normalizeEmail(),
-    body('userPass', 'Password should be atle 6 symbols').isLength({min:6})
-], registrationUser)
-authRouter.post('/login', [
-    body('userEmail', 'Should be email').isEmail().normalizeEmail(),
-    body('userPass', 'Password should be atle 6 symbols').isLength({min:6})
-], loginUser)
-authRouter.get('/read', readUser)
-authRouter.put('/update', updateUser)
-authRouter.delete('/delete/', deleteUser)
+authRouter.post(
+  "/registration",
+  [
+    body("userName", "Name cannot be empty").notEmpty(),
+    body("userEmail", "Should be email").isEmail().normalizeEmail(),
+    body("userPass", "Password should be atle 6 symbols").isLength({ min: 6 }),
+  ],
+  registrationUser
+);
+authRouter.post(
+  "/login",
+  [
+    body("userEmail", "Should be email").isEmail().normalizeEmail(),
+    body("userPass", "Password should be atle 6 symbols").isLength({ min: 6 }),
+  ],
+  loginUser
+);
+authRouter.get("/read", readUser);
+authRouter.put("/update", verifyJWT, updateUser);
+authRouter.delete("/delete/", verifyJWT, deleteUser);

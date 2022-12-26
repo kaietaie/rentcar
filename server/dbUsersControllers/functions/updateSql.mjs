@@ -9,5 +9,5 @@ export default function updaterSql(keys, values) {
     str += `${keys[i]} = ${val},`;
     if (i === keys.length - 1) query = str.slice(0, -1);
   }
-  return `UPDATE Users SET ${query} WHERE ${keys[0]} = ${values[0]}`;
+  return `UPDATE Users SET ${query} WHERE ${keys[0]} = '${values[0]}'`;
 }

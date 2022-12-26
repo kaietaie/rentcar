@@ -1,48 +1,50 @@
-CREATE TABLE Users (
-    UserName        varchar(50) PRIMARY KEY NOT NULL,
-    UserPassword    varchar(70) NOT NULL,
+CREATE TABLE users (
+    username        varchar(50) PRIMARY KEY NOT NULL,
+    userpassword    varchar(200) NOT NULL,
+    userEmail       varchar(30) NOT NULL,
     authority       varchar(20) NOT NULL,
+    refreshtoken    varchar(200),
     Enabled         integer NOT NULL DEFAULT 1           
 );
 
-CREATE TABLE Clima (
-    Id_Cl           integer PRIMARY KEY NOT NULL,
-    Clima           boolean
+CREATE TABLE clima (
+    id_cl           integer PRIMARY KEY NOT NULL,
+    clima           boolean
 );
 CREATE TABLE Fuel (
-    Id_F            integer PRIMARY KEY NOT NULL,
-    Fuel            varchar(32) NOT NULL
+    id_F            integer PRIMARY KEY NOT NULL,
+    fuel            varchar(32) NOT NULL
 );
 CREATE TABLE Transmission (
-    Id_T            integer PRIMARY KEY NOT NULL,
-    Transmission    varchar(32) NOT NULL
+    id_t            integer PRIMARY KEY NOT NULL,
+    transmission    varchar(32) NOT NULL
 );
 CREATE TABLE Cruise (
-    Id_Cr           integer PRIMARY KEY NOT NULL,
-    Cruise          boolean
+    id_cr           integer PRIMARY KEY NOT NULL,
+    cruise          boolean
 );
 CREATE TABLE Class (
-    Id_C            integer PRIMARY KEY NOT NULL,
-    Class           varchar(32) NOT NULL
+    id_c            integer PRIMARY KEY NOT NULL,
+    class           varchar(32) NOT NULL
 );
 CREATE TABLE Available (
-    Id_Av           integer PRIMARY KEY NOT NULL,
-    Available       boolean
+    id_av           integer PRIMARY KEY NOT NULL,
+    available       boolean
 );
 CREATE TABLE Cars (
-    Id_Car          serial PRIMARY KEY,
-    Model           varchar(32) NOT NULL,
-    Brand           varchar(32) NOT NULL,
-    Engine          text,
-    Transmission    integer REFERENCES Transmission(Id_T) NOT NULL,
-    Fuel            integer REFERENCES Fuel(Id_F) NOT NULL,
-    Consumption     real,
-    Trunk           integer,
-    Class           integer REFERENCES Class(Id_C) NOT NULL,
-    Seats           integer,
-    Clima           integer  REFERENCES Clima(Id_Cl) NOT NULL,
-    Cruise          integer  REFERENCES Cruise(Id_Cr) NOT NULL,
-    Available       integer REFERENCES Available(Id_Av) NOT NULL
+    id_car          serial PRIMARY KEY,
+    model           varchar(32) NOT NULL,
+    brand           varchar(32) NOT NULL,
+    engine          text,
+    transmission    integer REFERENCES transmission(id_t) NOT NULL,
+    fuel            integer REFERENCES fuel(id_f) NOT NULL,
+    consumption     real,
+    trunk           integer,
+    class           integer REFERENCES class(id_c) NOT NULL,
+    seats           integer,
+    clima           integer  REFERENCES clima(id_cl) NOT NULL,
+    cruise          integer  REFERENCES cruise(id_cr) NOT NULL,
+    available       integer REFERENCES available(id_av) NOT NULL
     );
 
 -- bellow not realised yet

@@ -7,7 +7,6 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { auth } from "../common/firebaseconfig";
-import { useAuth } from "../context/AuthContext";
 
 export default function LoginComp() {
   const [loginEmail, setLoginEmail] = useState("");
