@@ -9,16 +9,16 @@ This is the website of rent car company
 * React
 * React Router
 * PostgreSQL
-* Firebase Auth
+* Authentication with JWT 
 * Google Maps
 * Material UI
 
 ## How to start project?
 
-1. clone repo in your terminal with command `gh repo clone kaietaie/rentcar`
-2. install NodeJS if you don`t have it yet
+1. clone repo in your terminal 
+2. install [NodeJS](https://nodejs.org/) if you don`t have it yet
 3. `cd` into `rentcar` folder and type `npm install`
-4. run backend-server type `npm run serverStart`
+4. run backend-server type `npm run server`
 5. run the React project type `npm start`
 
 ## Install PostgreSQL
@@ -37,18 +37,11 @@ This is the website of rent car company
     If you have a problem "Peer authentication failed" go to [stackoverflow 1st answer](https://stackoverflow.com/questions/18664074/getting-error-peer-authentication-failed-for-user-postgres-when-trying-to-ge)
 4. Install dependencies (include `pg` module for working with PostgreSQL) `npm i`
 
-## Security files needed:
+## Hiden files needed:
 This files should be in root folder. And looks like this: 
-* `.env` with Firebase data connection
+* `.env`
 
 ```
-    REACT_APP_FIREBASE_API_KEY=
-    REACT_APP_FIREBASE_AUTH_DOMAIN=
-    REACT_APP_FIREBASE_PROJECT_ID=
-    REACT_APP_FIREBASE_STORAGE_BUCKET=
-    REACT_APP_FIREBASE_MEMESSEGING_SENDER_ID=
-    REACT_APP_FIREBASE_APP_ID=
-    REACT_APP_FIREBASE_MEASUREMENT_ID=
     REACT_APP_MAP_API_KEY=
     HOST=
     PORT=
@@ -57,5 +50,4 @@ This files should be in root folder. And looks like this:
     POSTGRES_USER=
     POSTGRES_PASS=
 ```
-
-To get new keys you should make new project in Firebase
+Enter here yours values.
