@@ -2,8 +2,12 @@ import React from 'react';
 import MainCarousel from "../components/Carousel";
 import ShowCard from "../components/CarCards/ShowCard";
 import MapRend from "../map/Map";
+import useScreen from "../hooks/useScreen";
+
+import "./Main.sass";
 
 const Main = () => {
+    const { isMobile } = useScreen();
   return (
     <div className="MainWrapper">
      
@@ -30,7 +34,7 @@ const Main = () => {
         </div>
       </div>
       <div className=""></div>
-      <MainCarousel />
+        {!isMobile() && <MainCarousel />}
       <div>
         <h1>ПОПУЛЯРНЫЕ МАШИНЫ АВТОПРОКАТА</h1>
         <div className="carsCards">

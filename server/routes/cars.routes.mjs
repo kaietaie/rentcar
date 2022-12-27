@@ -1,14 +1,21 @@
 import Router from "express";
-import {dbController} from '../dbController/dbController.mjs';
+import createCar from "../dbCarControllers/createCarComponent.mjs";
+import deleteCar from "../dbCarControllers/deleteCarComponent.mjs";
+import updateCar from "../dbCarControllers/updateCarComponent.mjs";
+import getCars from '../dbCarControllers/getCarsComponent.mjs';
+import getOneCar from '../dbCarControllers/getOneCarComponent.mjs';
+import verifyJWT from "../middleware/verifyJWT.js";
+import { verifyAuthority } from "../middleware/verifyAuthority.js";
+import { authorityList } from "../config/authorityList.js";
 
-export const carsrouter = new Router();
+export const carsRouter = new Router();
 
 
-carsrouter.post('/cars', dbController.createCar)
-carsrouter.get('/cars', dbController.getCars)
-carsrouter.get('/cars/:model', dbController.getOneCar)
-carsrouter.put('/cars', dbController.updateCar)
-carsrouter.delete('/cars/:model', dbController.deleteCar)
+carsRouter.post('/cars',verifyJWT, verifyAuthority(authorityList.Admin, authorityList.Holder), createCar)
+carsRouter.get('/cars', getCars)
+carsRouter.get('/cars/:model', getOneCar)
+carsRouter.put('/cars/',verifyJWT, verifyAuthority(authorityList.Admin, authorityList.Holder), updateCar)
+carsRouter.delete('/cars/:model',verifyJWT, verifyAuthority(authorityList.Admin), deleteCar)
 
 
 

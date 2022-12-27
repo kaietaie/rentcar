@@ -3,13 +3,14 @@ import LoginHeaderComponent from "./LoginHeaderComponent";
 import LogoutHeaderComponent from "./LogoutHeaderComponent";
 import { useAuth } from "../../context/AuthContext";
 
-function LoginHeader() {
-  const currentUser = useAuth();
-  if (!currentUser.currentUser?.email) {
-      return <LogoutHeaderComponent />
-    } 
+const LoginHeader = ({ isMobile }) => {
+    const currentUser = useAuth();
 
-  return <LoginHeaderComponent />
-}
+    return (
+        <div className={`${!isMobile ? 'login': ""}`}>
+            {currentUser.currentUser?.email ? <LoginHeaderComponent /> : <LogoutHeaderComponent />}
+        </div>
+    );
+};
 
 export default LoginHeader;
