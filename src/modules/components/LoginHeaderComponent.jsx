@@ -1,25 +1,36 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
-import { useAuth } from "../context/AuthContext";
-import { getAuth, signOut } from "firebase/auth";
+import useAuth from "../hooks/useAuth";
+import AuthContext from "../../context/AuthProvider";
+import axios from "./api/UserAPI.js";
 
 function LoginHeaderComponent() {
-  const [error, setError] = useState("");
+  const { setAuth } = useContext(AuthContext);
+  const auth = useAuth();
   const navigate = useNavigate();
-  const logout = useAuth();
-  const go = () => navigate("/user-page");
- 
-  const auth = getAuth();
-  const handlerLogut = () => {
-    signOut(auth)
-      .then(() => {
-        navigate("/");
-      })
-      .catch((error) => {
-        setError("Failed to log out");
-        console.log(error);
-      });
+  const go = () => {
+    if (auth.auth.authority[0] === "5150") {
+      navigate("/admin-panel");
+    } else if (auth.auth.authority[0] === "2001") {
+      navigate("/user-page");
+    } else if (auth.auth.authority[0] === "1984") {
+      navigate("/holder-page");
+    }
+  };
+  const buttonValue = () => {
+    if (auth.auth.authority[0] === "5150") {
+      return "Admin page"
+    } else if (auth.auth.authority[0] === "2001") {
+      return "User page"
+    } else if (auth.auth.authority[0] === "1984") {
+      return "Holder page"
+    }
+  }
+  const handlerLogOut = async () => {
+    await axios.get("/logout");
+    setAuth({})
+    navigate("/");
   };
 
   return (
@@ -30,11 +41,12 @@ function LoginHeaderComponent() {
         style={{ marginBottom: "15px" }}
         onClick={go}
       >
-        Личный кабинет
+        {buttonValue()}
       </Button>
       <br />
-      <Button size="small" variant="contained" onClick={handlerLogut}>
-        Выйти
+
+      <Button size="small" variant="contained" onClick={handlerLogOut}>
+        Sign Out
       </Button>
     </>
   );

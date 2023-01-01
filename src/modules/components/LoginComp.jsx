@@ -1,68 +1,116 @@
-import {
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-} from "firebase/auth";
-import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { Button } from "react-bootstrap";
-import { auth } from "../common/firebaseconfig";
+import { Button } from "@mui/material";
+import { useRef, useState, useEffect } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import axios from "./api/UserAPI";
 
-export default function LoginComp() {
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPass, setLoginPass] = useState("");
-  const [user, setUser] = useState({});
+const LOGIN_URL = "/auth/login";
 
-  let navigate = useNavigate();
+const Login = () => {
+  const { setAuth } = useAuth();
 
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
+  const navigate = useNavigate();
+  const location = useLocation();
+  //think and modify "from"
+  const from = location.state?.from?.pathname || "/";
 
-  const register = async () => {
+  const userEmailRef = useRef();
+  const errRef = useRef();
+
+  const [userEmail, setUserEmail] = useState("");
+  const [userPass, setUserPass] = useState("");
+  const [errMsg, setErrMsg] = useState("");
+
+  useEffect(() => {
+    userEmailRef.current.focus();
+  }, []);
+
+  useEffect(() => {
+    setErrMsg("");
+  }, [userEmail, userPass]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     try {
-      user = await createUserWithEmailAndPassword(auth, loginEmail, loginPass);
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
-  const login = async () => {
-    try {
-      const user = await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPass
+      const response = await axios.post(
+        LOGIN_URL,
+        JSON.stringify({ userEmail, userPass }),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
       );
-      navigate("/user-page");
-    } catch (error) {
-      console.error(error.message);
+      const accessToken = response?.data?.actoken;
+      const authority = response?.data?.authority;
+      setAuth({ authority, accessToken });
+      setUserEmail("");
+      setUserPass("");
+      navigate(from, { replace: true });
+    } catch (err) {
+      if (!err?.response) {
+        setErrMsg("No Server Response");
+      } else if (err.response?.status === 400) {
+        setErrMsg("Missing email or password");
+      } else if (err.response?.status === 401) {
+        setErrMsg("Unauthorized");
+      } else {
+        setErrMsg("Login Failed");
+      }
+      errRef.current.focus();
     }
   };
-  return (
-    <>
-      <input
-        placeholder="Email..."
-        type="email"
-        onChange={(ev) => {
-          setLoginEmail(ev.target.value);
-        }}
-        required
-      />
-      <input
-        placeholder="Password..."
-        type="password"
-        onChange={(ev) => {
-          setLoginPass(ev.target.value);
-        }}
-        required
-      />
 
-      <Button className="w-100 mt-4" onClick={login}>
-        Login
-      </Button>
-      <Button className="w-100 mt-4" onClick={register}>
-        Restristration
-      </Button>
-    </>
+  return (
+    <section>
+      <p
+        ref={errRef}
+        className={errMsg ? "errmsg" : "offscreen"}
+        aria-live="assertive"
+      >
+        {errMsg}
+      </p>
+      <h1>Sign In</h1>
+      <form>
+        <label htmlFor="userEmail">Email:</label>
+        <input
+          type="text"
+          id="userEmail"
+          ref={userEmailRef}
+          autoComplete="off"
+          onChange={(e) => setUserEmail(e.target.value)}
+          value={userEmail}
+          required
+        />
+        <br />
+        <label htmlFor="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          onChange={(e) => setUserPass(e.target.value)}
+          value={userPass}
+          required
+        />
+        <br />
+        <Button
+          size="small"
+          variant="contained"
+          style={{ marginBottom: "15px" }}
+          onClick={handleSubmit}
+        >
+          Sign In
+        </Button>
+        <br />
+      </form>
+      <p>
+        Need an Account?
+        <br />
+        <span className="line">
+          <Link to="/registration">Sign Up</Link>
+        </span>
+      </p>
+    </section>
   );
-}
+};
+
+export default Login;

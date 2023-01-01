@@ -21,6 +21,7 @@ export default async function loginUser(req, res) {
     }
     const actoken = accessToken(user.username, user.authority);
     const reftoken = refreshToken(user.username, user.authority);
+    const authority = [user.authority];
     // Add refreshToken in DB
     const str = updaterSql(['useremail', 'refreshtoken'], [ userEmail, reftoken]);
     await pool.query(str);
@@ -31,7 +32,7 @@ export default async function loginUser(req, res) {
       secure: true,
       maxAge: 24 * 60 * 60 * 1000,
     });
-    res.json({ actoken });
+    res.json({ actoken, authority  });
   } catch (e) {
     console.log(e);
     res.status(400).json({ message: `Login error` });

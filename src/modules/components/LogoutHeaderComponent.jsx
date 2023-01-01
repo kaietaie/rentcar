@@ -10,7 +10,7 @@ function LogoutHeaderComponent() {
       <br />
       <Button size="small" variant="contained">
         <Link to="/login" element={<Login />}>
-          Войти
+          Sign In
         </Link>
       </Button>
     </>

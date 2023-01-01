@@ -6,6 +6,7 @@ import useScreen from "../hooks/useScreen";
 
 import "./Main.sass";
 
+
 const Main = () => {
     const { isMobile } = useScreen();
   return (

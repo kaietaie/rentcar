@@ -1,14 +1,13 @@
 import React from "react";
+import useAuth from "../hooks/useAuth";
 import LoginHeaderComponent from "./LoginHeaderComponent";
 import LogoutHeaderComponent from "./LogoutHeaderComponent";
-import { useAuth } from "../context/AuthContext";
 
 const LoginHeader = ({ isMobile }) => {
-    const currentUser = useAuth();
-
+    const auth = useAuth()
     return (
         <div className={`${!isMobile ? 'login': ""}`}>
-            {currentUser.currentUser?.email ? <LoginHeaderComponent /> : <LogoutHeaderComponent />}
+            {auth.auth.accessToken ? <LoginHeaderComponent /> : <LogoutHeaderComponent />}
         </div>
     );
 };
