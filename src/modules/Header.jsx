@@ -20,12 +20,9 @@ import Contacts from "./pages/Contacts";
 import LoginHeader from "./components/LoginHeader";
 
 import "./Header.sass";
-import useAuth from "./hooks/useAuth";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
-  const auth = useAuth();
-  console.log(auth)
   return (
     <header>
       <Hidden smDown>

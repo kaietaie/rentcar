@@ -7,7 +7,7 @@ import axios from "./api/UserAPI";
 const LOGIN_URL = "/auth/login";
 
 const Login = () => {
-  const { setAuth } = useAuth();
+  const { setAuth, persist, setPersist } = useAuth();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -61,6 +61,14 @@ const Login = () => {
     }
   };
 
+  const togglePersist = ()=> {
+    setPersist( prev => !prev)
+  }
+
+  useEffect( ()=> {
+    localStorage.setItem("persist", persist)
+  }, [persist])
+  
   return (
     <section>
       <p
@@ -100,6 +108,14 @@ const Login = () => {
         >
           Sign In
         </Button>
+        <br />
+        <div className="persistCheck">
+          <input type="checkbox"
+          id="persist"
+          onChange={togglePersist}
+          checked={persist} />
+          <label htmlFor="persist">Remember me</label>
+        </div>
         <br />
       </form>
       <p>

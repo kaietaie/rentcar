@@ -12,7 +12,7 @@ CREATE TABLE clima (
     clima           boolean
 );
 CREATE TABLE Fuel (
-    id_F            integer PRIMARY KEY NOT NULL,
+    id_f            integer PRIMARY KEY NOT NULL,
     fuel            varchar(32) NOT NULL
 );
 CREATE TABLE Transmission (

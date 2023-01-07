@@ -17,6 +17,7 @@ import { AuthProvider } from "./context/AuthProvider.js";
 import Register from "./modules/pages/Registration";
 import Unauthorized from "./modules/pages/Unauthorized";
 import Holder from "./modules/pages/Holder";
+import PersistLogin from "./modules/components/PersistLogin";
 
 export default function App() {
   return (
@@ -33,17 +34,23 @@ export default function App() {
             <Route path="login" element={<Login />} />
             <Route path="registration" element={<Register />} />
             <Route path="unauthorized" element={<Unauthorized />} />
-            <Route element={<ProtectedRoute allowedAuthority={["2001"]}/>} >
-              <Route path="user-page" element={<Client />} />
-            </Route>
-            <Route element={<ProtectedRoute allowedAuthority={["5150"]}/>} >
-              <Route path="/admin-panel" element={<Admin />} />
-            </Route>
-            <Route    element={<ProtectedRoute allowedAuthority={["2001", "1984", "5150"]}/>} >
-              <Route path="feedback" element={<Feedback />} />
-            </Route>
-            <Route element={<ProtectedRoute allowedAuthority={["1984"]}/>} >
-              <Route path="holder-page" element={<Holder />} />
+            <Route element={<PersistLogin />}>
+              <Route element={<ProtectedRoute allowedAuthority={["2001"]} />}>
+                <Route path="user-page" element={<Client />} />
+              </Route>
+              <Route element={<ProtectedRoute allowedAuthority={["5150"]} />}>
+                <Route path="/admin-panel" element={<Admin />} />
+              </Route>
+              <Route
+                element={
+                  <ProtectedRoute allowedAuthority={["2001", "1984", "5150"]} />
+                }
+              >
+                <Route path="feedback" element={<Feedback />} />
+              </Route>
+              <Route element={<ProtectedRoute allowedAuthority={["1984"]} />}>
+                <Route path="holder-page" element={<Holder />} />
+              </Route>
             </Route>
           </Routes>
           <Footer />
