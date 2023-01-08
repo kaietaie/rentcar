@@ -1,12 +1,14 @@
-import { Button } from "@mui/material";
-import { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import {Button, TextField} from "@mui/material";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import axios from "./api/UserAPI";
 
+import './LoginComp.sass'
+
 const LOGIN_URL = "/auth/login";
 
-const Login = () => {
+const LoginComp = () => {
   const { setAuth } = useAuth();
 
   const navigate = useNavigate();
@@ -30,8 +32,7 @@ const Login = () => {
   }, [userEmail, userPass]);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-
+    console.log({ userEmail, userPass })
     try {
       const response = await axios.post(
         LOGIN_URL,
@@ -62,45 +63,45 @@ const Login = () => {
   };
 
   return (
-    <section>
+    <section className='form'>
       <p
         ref={errRef}
-        className={errMsg ? "errmsg" : "offscreen"}
+        className={errMsg ? "error-message" : "offscreen"}
         aria-live="assertive"
       >
         {errMsg}
       </p>
       <h1>Sign In</h1>
-      <form>
-        <label htmlFor="userEmail">Email:</label>
-        <input
-          type="text"
-          id="userEmail"
-          ref={userEmailRef}
-          autoComplete="off"
+      <form className="sign-in-form">
+        <TextField
+          required
+          inputRef={userEmailRef}
+          label="Ел. пошта"
+          id="email"
+          name="email"
+          type="email"
           onChange={(e) => setUserEmail(e.target.value)}
           value={userEmail}
-          required
+          margin="normal"
         />
-        <br />
-        <label htmlFor="password">Password:</label>
-        <input
+        <TextField
+          required
+          label="Пароль"
           type="password"
           id="password"
           onChange={(e) => setUserPass(e.target.value)}
           value={userPass}
-          required
+          margin="normal"
         />
-        <br />
         <Button
+          className="sign-in-btn"
           size="small"
           variant="contained"
-          style={{ marginBottom: "15px" }}
           onClick={handleSubmit}
+          type="submit"
         >
           Sign In
         </Button>
-        <br />
       </form>
       <p>
         Need an Account?
@@ -113,4 +114,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginComp;
