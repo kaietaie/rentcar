@@ -87,8 +87,8 @@ const Header = () => {
         </div>
       </Hidden>
       <Hidden smUp>
-        <IconButton className="header-burger">
-          <MenuIcon onClick={() => setOpen(true)} />
+        <IconButton onClick={() => setOpen(true)} className="header-burger">
+          <MenuIcon />
         </IconButton>
       </Hidden>
       <SwipeableDrawer
@@ -98,8 +98,8 @@ const Header = () => {
         onOpen={() => setOpen(true)}
       >
         <div>
-          <IconButton>
-            <ChevronRight onClick={() => setOpen(false)} />
+          <IconButton onClick={() => setOpen(false)}>
+            <ChevronRight />
           </IconButton>
         </div>
         <Divider />
