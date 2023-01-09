@@ -1,3 +1,5 @@
+@import '../common/variables'
+
 .mainBoard
   display: flex
   flex-direction: row
@@ -60,3 +62,25 @@
 
 .cardStyle:hover
   transform: scale(1.1)
+
+
+/* Forms */
+
+.form-container
+  background: $gray $gradient
+  padding: 20px
+  border-radius: 5px
+  box-shadow: $box-shadow
+
+.form
+  display: flex
+  flex-direction: column
+
+  .form-btn
+    margin: 10px auto
+    min-width: 40%
+    align-items: center
+
+.error-message
+  color: $red
+

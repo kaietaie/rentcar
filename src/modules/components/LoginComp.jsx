@@ -4,8 +4,6 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import axios from "./api/UserAPI";
 
-import './LoginComp.sass'
-
 const LOGIN_URL = "/auth/login";
 
 const LoginComp = () => {
@@ -63,7 +61,7 @@ const LoginComp = () => {
   };
 
   return (
-    <section className='form'>
+    <section className='form-container'>
       <p
         ref={errRef}
         className={errMsg ? "error-message" : "offscreen"}
@@ -72,7 +70,7 @@ const LoginComp = () => {
         {errMsg}
       </p>
       <h1>Sign In</h1>
-      <form className="sign-in-form">
+      <form className="form">
         <TextField
           required
           inputRef={userEmailRef}
@@ -94,7 +92,7 @@ const LoginComp = () => {
           margin="normal"
         />
         <Button
-          className="sign-in-btn"
+          className="form-btn"
           size="small"
           variant="contained"
           onClick={handleSubmit}
