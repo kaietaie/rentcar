@@ -30,7 +30,8 @@ const LoginComp = () => {
   }, [userEmail, userPass]);
 
   const handleSubmit = async (e) => {
-    console.log({ userEmail, userPass })
+    e.preventDefault();
+
     try {
       const response = await axios.post(
         LOGIN_URL,
