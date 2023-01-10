@@ -44,21 +44,25 @@
 .carsCards
   margin-right: auto
   margin-left: auto
-  width: 80vw
   display: grid
-  grid-template-columns: 1fr 1fr 1fr
+  grid-template-columns: repeat(3, 1fr)
 
-  @media screen and (max-width: 799px)
-    grid-template-columns: 1fr 1fr
+  @media screen and (max-width: 939px)
+    grid-template-columns: repeat(2, 1fr)
 
-  @media screen and (max-width: 599px)
+  @media screen and (max-width: 629px)
     grid-template-columns: 1fr
 
 /* Cards */
 .cardStyle
-  border: 2px solid #767676
   margin: 20px
   cursor: pointer
+  width: 270px
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  background: $gray $gradient
+  padding: 20px
 
 .cardStyle:hover
   transform: scale(1.1)
@@ -83,4 +87,3 @@
 
 .error-message
   color: $red
-
