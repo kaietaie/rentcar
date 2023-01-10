@@ -6,7 +6,7 @@ import AuthContext from "../../context/AuthProvider";
 import axios from "./api/UserAPI.js";
 
 function LoginHeaderComponent() {
-  const { setAuth } = useContext(AuthContext);
+  const { setAuth, setPersist } = useContext(AuthContext);
   const auth = useAuth();
   const navigate = useNavigate();
   const go = () => {
@@ -30,6 +30,7 @@ function LoginHeaderComponent() {
   const handlerLogOut = async () => {
     await axios.get("/logout");
     setAuth({})
+    setPersist(false)
     navigate("/");
   };
 

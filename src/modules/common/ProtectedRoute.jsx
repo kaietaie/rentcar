@@ -13,15 +13,12 @@ const ProtectedRoute = ({ allowedAuthority }) => {
 //             ? <Navigate to="/unauthorized" state={{ from: location }} replace />
 //             : <Navigate to="/login" state={{ from: location }} replace />
 // );
-  return auth?.authority ? (
-    allowedAuthority.find((authority) => authority === auth?.authority[0]) ? (
-      <Outlet />
-    ) : (
-      <Navigate to="unauthorized" state={{ from: location }} replace />
-    )
-  ) : (
-    <Navigate to="login" state={{ from: location }} replace />
-  );
+  return auth?.authority 
+    ? (allowedAuthority.find((authority) => authority === auth?.authority[0]) 
+    ? <Outlet />
+    : <Navigate to="unauthorized" state={{ from: location }} replace />)
+    : <Navigate to="login" state={{ from: location }} replace />
+  ;
 };
 
 export default ProtectedRoute;

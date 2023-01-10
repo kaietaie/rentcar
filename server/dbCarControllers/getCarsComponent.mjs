@@ -1,7 +1,7 @@
 import { pool } from "../dbConnectComponent.mjs";
 
 export default async function getCars(req, res) {
-    const sql = `SELECT id_car, brand, model, engine, seats, 
+    const sql = `SELECT id_car, brand, model, engine, consumption, trunk, seats, 
                         Transmission.Transmission, 
                         Fuel.Fuel,
                         Class.Class,

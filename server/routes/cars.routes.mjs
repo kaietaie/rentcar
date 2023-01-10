@@ -15,7 +15,7 @@ carsRouter.post('/cars',verifyJWT, verifyAuthority(authorityList.Admin, authorit
 carsRouter.get('/cars', getCars)
 carsRouter.get('/cars/:model', getOneCar)
 carsRouter.put('/cars/',verifyJWT, verifyAuthority(authorityList.Admin, authorityList.Holder), updateCar)
-carsRouter.delete('/cars/:model',verifyJWT, verifyAuthority(authorityList.Admin), deleteCar)
+carsRouter.delete('/cars/:id',verifyJWT, verifyAuthority(authorityList.Admin), deleteCar)
 
 
 

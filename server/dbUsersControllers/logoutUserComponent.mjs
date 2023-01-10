@@ -20,6 +20,7 @@ export default async function logoutHandle(req, res) {
   }
   // Delete refreshToken in DB
   const str = updaterSql(['refreshtoken', 'refreshtoken'], [refreshToken, ""]) 
+  console.log(str)
   await pool.query(str);
   res.clearCookie("jwt", { httpOnly: true, sameSite: "None", secure: true });
   res.sendStatus(204);
