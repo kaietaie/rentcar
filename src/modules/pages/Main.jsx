@@ -6,7 +6,20 @@ import useScreen from "../hooks/useScreen";
 
 import "./Main.sass";
 
-
+const popularCars = [
+    {
+        id: "1",
+        car: "Škoda Fabia"
+    },
+    {
+        id: "2",
+        car: "Škoda Superb"
+    },
+    {
+        id: "3",
+        car: "Volkswagen Golf"
+    }
+]
 const Main = () => {
     const { isMobile } = useScreen();
   return (
@@ -36,12 +49,10 @@ const Main = () => {
       </div>
       <div className=""></div>
         {!isMobile() && <MainCarousel />}
-      <div>
+      <div className="wrapper">
         <h1>ПОПУЛЯРНЫЕ МАШИНЫ АВТОПРОКАТА</h1>
         <div className="carsCards">
-          <ShowCard showCar="Škoda Fabia"/> 
-          <ShowCard showCar="Škoda Superb"/> 
-          <ShowCard showCar="Volkswagen Golf"/>
+          {popularCars.map(({car, id})=> <ShowCard key={id} showCar={car}/>)}
         </div>
       </div>
 
