@@ -1,0 +1,49 @@
+@import '../../common/variables'
+
+.menu
+  background: $gray $menuGradient
+  box-shadow: $box-shadow
+  margin: 10px 0
+  max-width: 100%
+
+.menuList li
+  display: inline
+
+.menuList
+  align-items: center
+  display: flex
+  justify-content: space-around
+  max-width: 100vh
+  padding: 15px
+  text-transform : uppercase
+  height: 50px
+  margin-right: auto
+  margin-left: auto
+
+.menuList--mobile
+  .menu-item-mobile
+    color: #767676
+    text-transform : uppercase
+    text-decoration: none
+
+    &.menu-item--active
+      text-decoration: underline black 0.15rem
+      text-underline-offset: 0.3rem
+
+.menu-item
+  text-decoration: none
+  color: black
+  padding: 16px 20px
+  vertical-align: text-top
+
+  &:hover
+    background-color: #808080
+    color: white
+    box-shadow: $menu-item-shadow
+
+  &.menu-item--active
+    text-decoration: underline black 0.15rem
+    text-underline-offset: 1.1rem
+
+    &:hover
+      text-decoration: unset
