@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import Footer from "./modules/Footer.jsx";
 import Header from "./modules/Header.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -17,6 +16,7 @@ import { AuthProvider } from "./context/AuthProvider.js";
 import Register from "./modules/pages/Registration";
 import Unauthorized from "./modules/pages/Unauthorized";
 import Holder from "./modules/pages/Holder";
+import "./App.sass";
 
 export default function App() {
   return (
