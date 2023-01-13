@@ -8,7 +8,7 @@ function LogoutHeaderComponent() {
     <>
       Login
       <br />
-      <Button size="small" variant="contained">
+      <Button className="login-btn" size="small" variant="contained">
         <Link to="/login" element={<Login />}>
           Sign In
         </Link>

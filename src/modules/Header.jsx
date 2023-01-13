@@ -1,25 +1,12 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
-import {
-  Hidden,
-  IconButton,
-  SwipeableDrawer,
-  Divider,
-  List,
-  ListItem,
-} from "@mui/material";
-import { ChevronRight } from "@mui/icons-material";
-import Main from "./pages/Main";
-import Autopark from "./pages/Autopark";
-import Terms from "./pages/Terms";
-import Feedback from "./pages/Feedback";
-import Advices from "./pages/Advices";
-import Contacts from "./pages/Contacts";
+import {Divider, Hidden, IconButton, List, ListItem, SwipeableDrawer,} from "@mui/material";
+import {ChevronRight} from "@mui/icons-material";
 import LoginHeader from "./components/LoginHeader";
 import useAuth from "./hooks/useAuth";
-
+import Menu from "./components/menu/Menu.jsx";
+import MobileMenuList from "./components/menu/MobileMenuList.jsx";
 import "./Header.sass";
 
 const Header = () => {
@@ -50,40 +37,7 @@ const Header = () => {
             <LoginHeader auth={auth}/>
           </div>
         </div>
-        <div className="menu">
-          <ul className="menuList">
-            <li>
-              <Link element={<Main />} to="/">
-                Главная
-              </Link>
-            </li>
-            <li>
-              <Link element={<Autopark />} to="/autopark">
-                Автопарк
-              </Link>
-            </li>
-            <li>
-              <Link element={<Terms />} to="/terms">
-                Условия
-              </Link>
-            </li>
-            <li>
-              <Link element={<Feedback />} to="/feedback">
-                Отзывы
-              </Link>
-            </li>
-            <li>
-              <Link element={<Advices />} to="/advices">
-                Советы
-              </Link>
-            </li>
-            <li>
-              <Link element={<Contacts />} to="/contacts">
-                Контакты
-              </Link>
-            </li>
-          </ul>
-        </div>
+        <Menu />
       </Hidden>
       <Hidden smUp>
         <IconButton onClick={() => setOpen(true)} className="header-burger">
@@ -114,38 +68,7 @@ const Header = () => {
           </ListItem>
         </List>
         <Divider />
-        <List className="menuList--mobile">
-          <ListItem>
-            <Link element={<Main />} to="/">
-              Главная
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link element={<Autopark />} to="/autopark">
-              Автопарк
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link element={<Terms />} to="/terms">
-              Условия
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link element={<Feedback />} to="/feedback">
-              Отзывы
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link element={<Advices />} to="/advices">
-              Советы
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link element={<Contacts />} to="/contacts">
-              Контакты
-            </Link>
-          </ListItem>
-        </List>
+          <MobileMenuList/>
         <Divider />
         <List>
           <ListItem>

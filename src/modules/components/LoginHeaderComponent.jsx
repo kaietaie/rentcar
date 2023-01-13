@@ -9,7 +9,7 @@ function LoginHeaderComponent(auth) {
   const navigate = useNavigate();
   console.log(auth)
   const go = () => {
-    if (auth.auth.authenticationority[0] === "5150") {
+    if (auth.authentication.authority[0] === "5150") {
       navigate("/admin-panel");
     } else if (auth.authentication.authority[0] === "2001") {
       navigate("/user-page");
