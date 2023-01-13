@@ -1,36 +1,41 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
-import useAuth from "../hooks/useAuth";
 import AuthContext from "../../context/AuthProvider";
 import axios from "./api/UserAPI.js";
 
-function LoginHeaderComponent() {
+function LoginHeaderComponent(auth) {
   const { setAuth, setPersist } = useContext(AuthContext);
-  const auth = useAuth();
   const navigate = useNavigate();
+  console.log(auth)
   const go = () => {
-    if (auth.auth.authority[0] === "5150") {
+    if (auth.auth.authenticationority[0] === "5150") {
       navigate("/admin-panel");
-    } else if (auth.auth.authority[0] === "2001") {
+    } else if (auth.authentication.authority[0] === "2001") {
       navigate("/user-page");
-    } else if (auth.auth.authority[0] === "1984") {
+    } else if (auth.authentication.authority[0] === "1984") {
       navigate("/holder-page");
     }
   };
   const buttonValue = () => {
-    if (auth.auth.authority[0] === "5150") {
-      return "Admin page"
-    } else if (auth.auth.authority[0] === "2001") {
-      return "User page"
-    } else if (auth.auth.authority[0] === "1984") {
-      return "Holder page"
+    if (auth.authentication.authority[0] === "5150") {
+      return "Admin page";
+    } else if (auth.authentication.authority[0] === "2001") {
+      return "User page";
+    } else if (auth.authentication.authority[0] === "1984") {
+      return "Holder page";
     }
-  }
+  };
   const handlerLogOut = async () => {
-    await axios.get("/logout");
-    setAuth({})
-    setPersist(false)
+    try {
+      await axios("/logout", {
+        withCredentials: true,
+      });
+    } catch (err) {
+      console.error(err);
+    }
+    setAuth({});
+    setPersist(false);
     navigate("/");
   };
 

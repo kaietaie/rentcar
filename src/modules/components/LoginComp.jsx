@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import {Button, TextField} from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import axios from "./api/UserAPI";
@@ -60,16 +60,16 @@ const LoginComp = () => {
     }
   };
 
-  const togglePersist = ()=> {
-    setPersist( prev => !prev)
-  }
+  const togglePersist = () => {
+    setPersist((prev) => !prev);
+  };
 
-  useEffect( ()=> {
-    localStorage.setItem("persist", persist)
-  }, [persist])
-  
+  useEffect(() => {
+    localStorage.setItem("persist", persist);
+  }, [persist]);
+
   return (
-    <section className='form-container'>
+    <section className="form-container">
       <p
         ref={errRef}
         className={errMsg ? "error-message" : "offscreen"}
@@ -110,10 +110,12 @@ const LoginComp = () => {
         </Button>
         <br />
         <div className="persistCheck">
-          <input type="checkbox"
-          id="persist"
-          onChange={togglePersist}
-          checked={persist} />
+          <input
+            type="checkbox"
+            id="persist"
+            onChange={togglePersist}
+            checked={persist}
+          />
           <label htmlFor="persist">Remember me</label>
         </div>
         <br />

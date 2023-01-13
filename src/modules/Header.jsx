@@ -18,11 +18,13 @@ import Feedback from "./pages/Feedback";
 import Advices from "./pages/Advices";
 import Contacts from "./pages/Contacts";
 import LoginHeader from "./components/LoginHeader";
+import useAuth from "./hooks/useAuth";
 
 import "./Header.sass";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const auth = useAuth();
   return (
     <header>
       <Hidden smDown>
@@ -45,7 +47,7 @@ const Header = () => {
               Прага: +420 111 111 111 <br />
               Братислава: +421 111 111 111
             </div>
-            <LoginHeader />
+            <LoginHeader auth={auth}/>
           </div>
         </div>
         <div className="menu">

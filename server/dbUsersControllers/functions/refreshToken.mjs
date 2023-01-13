@@ -10,8 +10,7 @@ export default async function handleRefreshToken(req, res) {
   const user = await getUser({ refreshToken: refreshToken });
   if (!user) return res.sendStatus(403);
 
-  const authority = user.authority;
-
+  const authority = [user.authority];
   jwt.verify(refreshToken, process.env.REFRESHKEY, (error, decoded) => {
     if (error || user.username !== decoded.name) {
       return res.sendStatus(403);
