@@ -2,7 +2,6 @@ import { pool } from "../dbConnectComponent.mjs";
 import bcrypt from "bcrypt";
 import getUser from "./functions/getUser.mjs";
 import { validationResult } from "express-validator";
-import { authorityList } from "../config/authorityList.js";
 
 export default async function registrationUser(req, res) {
   try {
@@ -12,7 +11,7 @@ export default async function registrationUser(req, res) {
         .status(400)
         .json({ message: "Error in registration process", errors });
     }
-    const { userName, userEmail, userPass } = req.body;
+    const { userName, userEmail, userPass, authority } = req.body;
     const user = await getUser({"userEmail":userEmail} );
 
       if(user) {
@@ -26,7 +25,7 @@ export default async function registrationUser(req, res) {
       `INSERT INTO Users ( UserName, useremail, userpassword, authority )
       VALUES
       ($1, $2, $3, $4);`,
-      [userName, userEmail, hashPass, authorityList.Holder],
+      [userName, userEmail, hashPass, authority],
       (err, result) => {
         if (err) return res.status(400).json({ ERROR: "Something goes wrong", err });
         res.status(201).send(`New user was added`);

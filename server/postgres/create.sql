@@ -4,7 +4,7 @@ CREATE TABLE users (
     userEmail       varchar(30) NOT NULL,
     authority       varchar(20) NOT NULL,
     refreshtoken    varchar(200),
-    Enabled         integer NOT NULL DEFAULT 1           
+    Enabled         boolean NOT NULL DEFAULT true           
 );
 
 CREATE TABLE clima (
@@ -12,7 +12,7 @@ CREATE TABLE clima (
     clima           boolean
 );
 CREATE TABLE Fuel (
-    id_F            integer PRIMARY KEY NOT NULL,
+    id_f            integer PRIMARY KEY NOT NULL,
     fuel            varchar(32) NOT NULL
 );
 CREATE TABLE Transmission (

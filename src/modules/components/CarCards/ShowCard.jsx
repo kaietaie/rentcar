@@ -7,8 +7,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Car from './CarCardComponentCopy.jsx';
 
-
-
 export default class ShowCard extends Component  {
   constructor(props) {
     super(props)
@@ -39,7 +37,6 @@ export default class ShowCard extends Component  {
       <CardActions>
         <Button size="midle" variant="contained">ЗАБРОНЮВАТИ</Button>
       </CardActions>
-      
     </Card>
   );
   }
