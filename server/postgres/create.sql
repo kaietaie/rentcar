@@ -4,7 +4,7 @@ CREATE TABLE users (
     userEmail       varchar(30) NOT NULL,
     authority       varchar(20) NOT NULL,
     refreshtoken    varchar(200),
-    Enabled         integer NOT NULL DEFAULT 1           
+    Enabled         boolean NOT NULL DEFAULT true           
 );
 
 CREATE TABLE clima (
