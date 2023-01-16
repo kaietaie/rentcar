@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import axios from "../components/api/UserAPI";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import {Button, FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
+import {Button, MenuItem, TextField} from "@mui/material";
 
 const authorityList = {
   "Admin": 5150,
@@ -31,7 +31,7 @@ const Register = () => {
   const [validMatch, setValidMatch] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
-  const [authority, setAuthority] = React.useState("");
+  const [authority, setAuthority] = useState("");
 
   const handleChange = (event) => {
     setAuthority(event.target.value);
@@ -52,10 +52,14 @@ const Register = () => {
 
   useEffect(() => {
     setErrMsg("");
-  }, [userEmail, userPass, matchPass]);
+  }, [userEmail, userPass, matchPass, authority]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if(!authority) {
+      return setErrMsg("Complete all fields before submitting")
+    }
 
     try {
       await axios.post(
@@ -136,21 +140,19 @@ const Register = () => {
           margin="normal"
           aria-invalid={validMatch ? "false" : "true"}
         />
-        <FormControl margin="normal" fullWidth>
-          <InputLabel id="role-select-label">Роль</InputLabel>
-          <Select
-            labelId="role-select-label"
-            id="role-select-label"
-            value={authority}
-            label="Роль"
-            onChange={handleChange}
-            required
-          >
-            <MenuItem value={authorityList.Admin}>Admin</MenuItem>
-            <MenuItem value={authorityList.Holder}>Holder</MenuItem>
-            <MenuItem value={authorityList.User}>User</MenuItem>
-          </Select>
-        </FormControl>
+        <TextField
+          margin="normal"
+          select
+          id="role-select-label"
+          value={authority}
+          label="Роль"
+          onChange={handleChange}
+          required
+        >
+          <MenuItem value={authorityList.Admin}>Admin</MenuItem>
+          <MenuItem value={authorityList.Holder}>Holder</MenuItem>
+          <MenuItem value={authorityList.User}>User</MenuItem>
+        </TextField>
         <Button
           type="submit"
           className="form-btn"
