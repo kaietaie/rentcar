@@ -99,7 +99,7 @@ const Register = () => {
         <TextField
           required
           inputRef={userRef}
-          label="Ім'я"
+          label="Name"
           id="userName"
           name="userName"
           type="text"
@@ -110,7 +110,7 @@ const Register = () => {
         />
         <TextField
           required
-          label="Ел. пошта"
+          label="Email"
           id="userEmail"
           name="email"
           type="email"
@@ -122,7 +122,7 @@ const Register = () => {
         />
         <TextField
           required
-          label="Пароль"
+          label="Password"
           type="password"
           id="password"
           onChange={(e) => setUserPass(e.target.value)}
@@ -132,7 +132,7 @@ const Register = () => {
         />
         <TextField
           required
-          label="Підтвердіть пароль"
+          label="Confirm your password"
           type="password"
           id="confirm_pwd"
           onChange={(e) => setMatchPass(e.target.value)}
@@ -145,7 +145,7 @@ const Register = () => {
           select
           id="role-select-label"
           value={authority}
-          label="Роль"
+          label="Role"
           onChange={handleChange}
           required
         >
