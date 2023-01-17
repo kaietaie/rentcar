@@ -9,7 +9,10 @@ import verifyJWT from "../middleware/verifyJWT.js";
 import { verifyAuthority } from "../middleware/verifyAuthority.js";
 import { authorityList } from "../config/authorityList.js";
 import getUser from "../dbUsersControllers/functions/getUser.mjs";
+import getAllUser from "../dbUsersControllers/getAllUser.mjs";
 export const authRouter = new Router();
+
+authRouter.get("/all", getAllUser);
 
 authRouter.post(
   "/registration",

@@ -47,23 +47,42 @@ CREATE TABLE Cars (
     available       integer REFERENCES available(id_av) NOT NULL
     );
 
--- bellow not realised yet
--- table with addons to order, like navigator, child chair, additional bag on roof, etc.
--- CREATE TABLE Addons (
---     Id_Ad           serial PRIMARY KEY NOT NULL,
---     Addon           text
--- );
 
--- CREATE TABLE Users (
---     Id_Us           serial PRIMARY KEY NOT NULL,
---     UserName        text NOT NULL,
---     Email           text NOT NULL,
---     Phone           text NOT NULL,
---     UserPassword    text NOT NULL
--- );
+CREATE TABLE tel (
+    username        varchar(50) REFERENCES users(username) NOT NULL,
+    number          varchar(16)
+);
 
--- CREATE TABLE Order (
---     Id_Or           serial PRIMARY KEY NOT NULL,
---     Id_Us           integer REFERENCES Users(Id_Us) NOT NULL,
---     Id_Car          integer REFERENCES Cars(Id_Car) NOT NULL,
--- );
+CREATE TABLE place (
+    id_pl           serial PRIMARY KEY NOT NULL,
+    state           varchar(100),
+    city            varchar(100),
+    adress          varchar(100)
+);
+
+CREATE TABLE price (
+    id_price         serial PRIMARY KEY NOT NULL,
+    id_car           integer REFERENCES Cars(id_car) NOT NULL,
+    price            real
+);
+
+CREATE TABLE addons (
+    id_addons        serial PRIMARY KEY NOT NULL,
+    title            varchar(255),
+    price            real
+);
+
+CREATE TABLE orders (
+    id_order        serial PRIMARY KEY NOT NULL,
+    username        varchar REFERENCES Users(username) NOT NULL,
+    car             integer REFERENCES Cars(id_car) NOT NULL,
+    date_start      DATE NOT NULL,
+    date_end        DATE NOT NULL,
+    place           integer REFERENCES place(id_pl) NOT NULL,
+    price           real NOT NULL
+);
+
+CREATE TABLE order_addons (
+    id_order         integer REFERENCES orders(id_order),
+    id_addons        integer REFERENCES addons(id_addons)
+);

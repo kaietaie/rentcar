@@ -21,6 +21,7 @@ export default async function getCars(req, res) {
         ON Cruise.Id_Cr=Cars.Cruise   
         INNER JOIN Available 
         ON Available.Id_Av=Cars.Available 
+        order by id_car
         ;`;
     const carList = await pool.query(sql);
     res.json(carList.rows);

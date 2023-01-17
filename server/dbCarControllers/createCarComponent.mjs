@@ -34,4 +34,3 @@ export default async function createCar(req, res) {
         res.status(400).json({ message: "Registration error", ERROR : error.message  });
             }
       }
-// Можна винести функцію інсерту(та інших в другий компонентах), щоб не писати їх в замовленням

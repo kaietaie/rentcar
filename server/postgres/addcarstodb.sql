@@ -42,3 +42,14 @@ VALUES
 ('Golf', 'Volkswagen', '1.6 TDI, 85 kW', '1', '1', '3.8', '380', '2', '5', '1', '1', '1'),
 ('E-Class', 'Mercedes', '1.8 TDI, 130 kW', '2', '1', '5.8', '540', '2', '5', '1', '1', '1'),
 ('C-Class', 'Mercedes', '1.8 TDI, 120 kW', '1', '1', '5.7', '455', '2', '5', '1', '1', '1');
+
+insert into addons(title, price) values ('GPS', 50), ('child chair', 80), ('CD Verka Serdyuchka', 150);
+
+insert into price(id_car, price) values (1, 32), (2, 36), (3, 37), (4, 40), (5, 50), (6, 55);
+
+insert into place(state, city, adress ) 
+values 
+('Ukraine', 'Kyiv', 'Sviatoslava Horobrogo, 26' ), 
+('Ukraine', 'Lviv', 'Liubinska, 168'),
+('Slovakia', 'Bratislava', 'Pestovatelska, 4'),
+('Chesko', 'Praha', 'K Letišti 934');
