@@ -15,6 +15,7 @@ const getPrice = async (req, res, id_car, date_start, date_end) => {
     const dstart = new Date(date_start);
     const dend = new Date(date_end);
     const days = (dend.getTime() - dstart.getTime()) / (1000 * 60 * 60 * 24);
+    if (days < 0) return res.status(400).json({Error: "End day can`t be before start day" })
     const result = Math.ceil(days) * numprice[0];
     return result;
   } catch (err) {

@@ -5,6 +5,15 @@ export default async function createOrder(req, res) {
   const { username, car, date_start, date_end, id_pl } = req.body;
   // date_start and date_end should be string in date format like 2023-04-01 8:00
   let price;
+  const sqlquery = `SELECT * FROM Users WHERE Users.username=$1;`;
+  const user = await pool.query(sqlquery, [username] );
+  console.log(user)
+        if (!user?.rows[0]?.username ) {
+            return res
+              .status(400)
+              .json({ Error: "You should registered this user first" });
+          } 
+  
   try {
     price = await getPrice(req, res, car, date_start, date_end);
     try {
@@ -15,13 +24,6 @@ export default async function createOrder(req, res) {
       await pool.query(query, params, (err, result) => {
         if (err) {
           console.log(err.message);
-          if (
-            (err.message = `insert or update on table \"orders\" violates foreign key constraint \"orders_username_fkey\"`)
-          ) {
-            return res
-              .status(400)
-              .json({ Error: "You should registered this user first" });
-          } else
             return res
               .status(400)
               .json({ Error: "Cannot add an order", message: err.message });

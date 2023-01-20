@@ -4,6 +4,7 @@ export default async function getUser(user) {
   const key = Object.keys(user);
   const value = Object.values(user);
   const sql = `SELECT * FROM Users WHERE Users.${key}='${value}';`;
+  console.log(sql)
   const answer = await pool.query(sql);
   return answer.rows[0];
 }
