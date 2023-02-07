@@ -14,27 +14,27 @@ const LoginComp = () => {
   //think and modify "from"
   const from = location.state?.from?.pathname || "/";
 
-  const userEmailRef = useRef();
+  const user_emailRef = useRef();
   const errRef = useRef();
 
-  const [userEmail, setUserEmail] = useState("");
-  const [userPass, setUserPass] = useState("");
+  const [user_email, setUser_email] = useState("");
+  const [user_pass, setUser_pass] = useState("");
   const [errMsg, setErrMsg] = useState("");
 
   useEffect(() => {
-    userEmailRef.current.focus();
+    user_emailRef.current.focus();
   }, []);
 
   useEffect(() => {
     setErrMsg("");
-  }, [userEmail, userPass]);
+  }, [user_email, user_pass]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
         LOGIN_URL,
-        JSON.stringify({ userEmail, userPass }),
+        JSON.stringify({ user_email, user_pass }),
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
@@ -43,8 +43,8 @@ const LoginComp = () => {
       const accessToken = response?.data?.actoken;
       const authority = response?.data?.authority;
       setAuth({ authority, accessToken });
-      setUserEmail("");
-      setUserPass("");
+      setUser_email("");
+      setUser_pass("");
       navigate(from, { replace: true });
     } catch (err) {
       if (!err?.response) {
@@ -81,22 +81,22 @@ const LoginComp = () => {
       <form className="form">
         <TextField
           required
-          inputRef={userEmailRef}
-          label="Ел. пошта"
+          inputRef={user_emailRef}
+          label="Email"
           id="email"
           name="email"
           type="email"
-          onChange={(e) => setUserEmail(e.target.value)}
-          value={userEmail}
+          onChange={(e) => setUser_email(e.target.value)}
+          value={user_email}
           margin="normal"
         />
         <TextField
           required
-          label="Пароль"
+          label="Password"
           type="password"
           id="password"
-          onChange={(e) => setUserPass(e.target.value)}
-          value={userPass}
+          onChange={(e) => setUser_pass(e.target.value)}
+          value={user_pass}
           margin="normal"
         />
         <Button

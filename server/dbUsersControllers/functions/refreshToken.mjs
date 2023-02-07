@@ -12,7 +12,7 @@ export default async function handleRefreshToken(req, res) {
 
   const authority = [user.authority];
   jwt.verify(refreshToken, process.env.REFRESHKEY, (error, decoded) => {
-    if (error || user.username !== decoded.name) {
+    if (error || user.user_name !== decoded.name) {
       return res.sendStatus(403);
     }
 

@@ -1,8 +1,8 @@
 import { pool } from "../dbConnectComponent.mjs";
 
 export default async function deleteCar(req, res) {
-  const id = req.params.id;
-  const sql = "DELETE FROM Cars WHERE id_car = $1";
+  const id = req.body.car_id;
+  const sql = "UPDATE cars SET available=false WHERE car_id = $1";
   try {
     await pool.query(sql, [id],
       (err, result) => {

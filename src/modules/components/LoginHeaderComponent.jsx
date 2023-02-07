@@ -7,22 +7,22 @@ import axios from "./api/UserAPI.js";
 function LoginHeaderComponent(auth) {
   const { setAuth, setPersist } = useContext(AuthContext);
   const navigate = useNavigate();
-  console.log(auth)
+  // console.log(auth.authentication.authority[0])
   const go = () => {
-    if (auth.authentication.authority[0] === "5150") {
+    if (auth.authentication.authority[0] === 5150) {
       navigate("/admin-panel");
-    } else if (auth.authentication.authority[0] === "2001") {
+    } else if (auth.authentication.authority[0] === 2001) {
       navigate("/user-page");
-    } else if (auth.authentication.authority[0] === "1984") {
+    } else if (auth.authentication.authority[0] === 1984) {
       navigate("/holder-page");
     }
   };
   const buttonValue = () => {
-    if (auth.authentication.authority[0] === "5150") {
+    if (auth.authentication.authority[0] === 5150) {
       return "Admin page";
-    } else if (auth.authentication.authority[0] === "2001") {
+    } else if (auth.authentication.authority[0] === 2001) {
       return "User page";
-    } else if (auth.authentication.authority[0] === "1984") {
+    } else if (auth.authentication.authority[0] === 1984) {
       return "Holder page";
     }
   };
