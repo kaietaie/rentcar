@@ -13,16 +13,34 @@ export default async function updateOrder(req, res) {
       .status(404)
       .json({ Error: `Can't find order with id = ${order_id}` });
 
-  if (verifyAuthority(req, authorityList.Admin) || await checkIdentity(req)) {
+  if (verifyAuthority(req, authorityList.Admin) || (await checkIdentity(req))) {
     const keys = Object.keys(req.body);
     const values = Object.values(req.body);
-    try {
-      const updateOrder = await pool.query(updateSql(keys, values, "orders"));
-      if (updateOrder.command === "UPDATE") res.json("Order was updated");
-    } catch (error) {
-      res.status(400).json({ Error: error.message });
+    if (req.body?.car) {
+      const car_id = req.body.car;
+      const checkcar = await checkDataDB(car_id, "cars");
+      if (checkcar === false) {
+        return res.status(404).json({ Error: "Cannot find a car" });
+      }
+      console.log('car')
+      // update Price order
     }
+     if (req.body?.location) {
+      console.log('location')
+      const location_id = req.body.location;
+      const checklocation = await checkDataDB(location_id, "locations");
+      if (checklocation === false) {
+        return res.status(404).json({ Error: "Cannot find this location" });
+      }
+    } 
+      try {
+        const updateOrder = await pool.query(updateSql(keys, values, "orders"));
+        if (updateOrder.command === "UPDATE") res.json("Order was updated");
+      } catch (error) {
+        res.status(400).json({ Error: error.message });
+      }
+    
   } else {
-    return res.status(403).json({Error: "Forbidden"})
+    return res.status(403).json({ Error: "Forbidden" });
   }
 }
