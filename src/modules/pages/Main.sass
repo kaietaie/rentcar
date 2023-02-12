@@ -79,13 +79,15 @@
 .form-registration
   margin-right: auto
   margin-left: auto
-  max-width: 50%
 
 .form-inputs
-  display: 'grid'
-  padding: 2em
+  display: grid
+  grid-template-columns: 1fr
 
-  gridTemplateRows: 'repeat(2, 1fr)'
+  @media screen and (min-width: 600px)
+    display: grid
+    grid-template-columns: 1fr 1fr
+    grid-gap: 16px
 
 .form
   display: flex
