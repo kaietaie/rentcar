@@ -23,6 +23,7 @@ const Register = () => {
   const [user_name, setUser_name] = useState("");
   const [user_surname, setUser_surname] = useState("");
   const [user_email, setUser_email] = useState("");
+  const [phone, setPhone] = useState("");
   const [valid_email, setValid_email] = useState(false);
 
   const [user_pass, setUser_pass] = useState("");
@@ -61,7 +62,7 @@ const Register = () => {
     try {
       await axios.post(
         REGISTER_URL,
-        JSON.stringify({ user_name, user_surname, user_email, user_pass, authority }),
+        JSON.stringify({ user_name, user_surname, user_email, phone, user_pass, authority }),
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
@@ -71,6 +72,7 @@ const Register = () => {
       setUser_name("");
       setUser_surname("");
       setUser_email("");
+      setPhone("");
       setUser_pass("");
       setMatch_pass("");
       setAuthority("");
@@ -89,12 +91,13 @@ const Register = () => {
 
   return (
     <main className="MainWrapper">
-    <section className='form-container'>
+    <section className='form-container form-registration'>
       <p ref={errRef} className={errMsg ? "error-message" : "offscreen"}>
         {errMsg}
       </p>
       <h1>Registration</h1>
       <form className="form">
+      <div className="form-inputs">
         <TextField
           required
           inputRef={userRef}
@@ -130,7 +133,19 @@ const Register = () => {
           margin="normal"
           autoComplete="off"
           aria-invalid={valid_email ? "false" : "true"}
-        />
+        />        
+        <TextField
+        required
+        label="Phone"
+        id="phone"
+        name="phone"
+        type="tel"
+        onChange={(e) => setPhone(e.target.value)}
+        value={phone}
+        margin="normal"
+        autoComplete="off"
+        // aria-invalid={valid_email ? "false" : "true"}
+      />
         <TextField
           required
           label="Password"
@@ -166,6 +181,7 @@ const Register = () => {
             <MenuItem value={authorityList.User}>User</MenuItem>
           </Select>
         </FormControl>
+        </div>
         <Button
           type="submit"
           className="form-btn"
