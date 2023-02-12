@@ -40,7 +40,7 @@ const LoginComp = () => {
           withCredentials: true,
         }
       );
-      const accessToken = response?.data?.actoken;
+      const accessToken = response?.data?.accesstoken;
       const authority = response?.data?.authority;
       setAuth({ authority, accessToken });
       setUser_email("");

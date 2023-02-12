@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import React, {useContext, useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 import Button from "@mui/material/Button";
 import AuthContext from "../../context/AuthProvider";
 import axios from "./api/UserAPI.js";
 
 function LoginHeaderComponent(auth) {
-  const { setAuth, setPersist } = useContext(AuthContext);
+  const {setAuth, setPersist} = useContext(AuthContext);
+  const [buttonValue, setButtonValue] = useState('')
   const navigate = useNavigate();
-  // console.log(auth.authentication.authority[0])
   const go = () => {
     if (auth.authentication.authority[0] === 5150) {
       navigate("/admin-panel");
@@ -17,15 +17,17 @@ function LoginHeaderComponent(auth) {
       navigate("/holder-page");
     }
   };
-  const buttonValue = () => {
+
+  useEffect(() => {
     if (auth.authentication.authority[0] === 5150) {
-      return "Admin page";
+      return setButtonValue("Admin page");
     } else if (auth.authentication.authority[0] === 2001) {
-      return "User page";
+      return setButtonValue("User page");
     } else if (auth.authentication.authority[0] === 1984) {
-      return "Holder page";
+      return setButtonValue("Holder page");
     }
-  };
+  }, [])
+
   const handlerLogOut = async () => {
     try {
       await axios("/logout", {
@@ -44,12 +46,12 @@ function LoginHeaderComponent(auth) {
       <Button
         size="small"
         variant="contained"
-        style={{ marginBottom: "15px" }}
+        style={{marginBottom: "15px"}}
         onClick={go}
       >
-        {buttonValue()}
+        {buttonValue}
       </Button>
-      <br />
+      <br/>
 
       <Button size="small" variant="contained" onClick={handlerLogOut}>
         Sign Out
