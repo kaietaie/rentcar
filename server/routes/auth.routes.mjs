@@ -54,22 +54,22 @@ authRouter.get(
 );
 authRouter.put(
   "/update",
-  [
-    check("user_email")
-      .trim()
-      .isEmail()
-      .withMessage("Invalid email")
-      .custom(async (email) => {
-        const existingUser = await getUser({ user_email: email });
-        if (!existingUser) throw new Error("No such user");
-      }),
-  ],
-  (req, res, next) => {
-    const error = validationResult(req);
-    if (!error.isEmpty()) {
-      return res.status(400).json({ error: error.array()[0] });
-    } else next();
-  },
+  // [
+  //   check("user_email")
+  //     .trim()
+  //     .isEmail()
+  //     .withMessage("Invalid email")
+  //     .custom(async (email) => {
+  //       const existingUser = await getUser({ user_email: email });
+  //       if (!existingUser) throw new Error("No such user");
+  //     }),
+  // // ],
+  // (req, res, next) => {
+  //   const error = validationResult(req);
+  //   if (!error.isEmpty()) {
+  //     return res.status(400).json({ error: error.array()[0] });
+  //   } else next();
+  // },
   verifyJWT,
   // verifyAuthority(authorityList.Admin),
   updateUser

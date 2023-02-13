@@ -6,7 +6,7 @@ export default async function checkDataDB(id, table) {
     const sql = `SELECT * from ${table} WHERE ${normtable}_id=${id};`;
     const find = await pool.query(sql);
     if (find?.rows[0]?.archivated === true) return false;
-    if (find?.rows[0]?.enabled === true) return false;
+    if (find?.rows[0]?.enabled === false) return false;
     if (find?.rowCount === 1) return true;  
     return false;
   } catch (error) {
