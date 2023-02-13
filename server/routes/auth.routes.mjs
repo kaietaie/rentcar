@@ -20,18 +20,15 @@ authRouter.post(
     body("user_name", "Name cannot be empty").notEmpty(),
     body("user_surname", "Name cannot be empty").notEmpty(),
     body("user_email", "Should be email").isEmail().normalizeEmail(),
-    body("user_pass", "Password should be at least 6 symbols").isLength({ min: 6 }),
+    body("user_pass", "Password should be at least 6 symbols but max 20").isLength({
+      min: 6, max: 20
+    }),
   ],
   registrationUser
 );
-authRouter.post(
-  "/login",
-  [
-    body("user_email", "Should be email").isEmail().normalizeEmail(),
-    body("user_pass", "Password should be at least 6 symbols").isLength({ min: 6 }),
-  ],
-  loginUser
-);
+
+authRouter.post("/login", loginUser);
+
 authRouter.get(
   "/read",
   [
@@ -52,31 +49,7 @@ authRouter.get(
   },
   readUser
 );
-authRouter.put(
-  "/update",
-  // [
-  //   check("user_email")
-  //     .trim()
-  //     .isEmail()
-  //     .withMessage("Invalid email")
-  //     .custom(async (email) => {
-  //       const existingUser = await getUser({ user_email: email });
-  //       if (!existingUser) throw new Error("No such user");
-  //     }),
-  // // ],
-  // (req, res, next) => {
-  //   const error = validationResult(req);
-  //   if (!error.isEmpty()) {
-  //     return res.status(400).json({ error: error.array()[0] });
-  //   } else next();
-  // },
-  verifyJWT,
-  // verifyAuthority(authorityList.Admin),
-  updateUser
-);
-authRouter.delete(
-  "/delete",
-  verifyJWT,
-  // verifyAuthority(authorityList.Admin),
-  deleteUser
-);
+
+authRouter.put("/update", verifyJWT, updateUser);
+
+authRouter.delete("/delete", verifyJWT, deleteUser);

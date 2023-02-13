@@ -3,6 +3,7 @@ import getUser from "./functions/getUser.mjs";
 import bcrypt from "bcrypt";
 import updaterSql from "./functions/updateSql.mjs";
 import { pool } from "../dbConnectComponent.mjs";
+import emailValidation from "../functions/validation/emailValidation.mjs";
 
 export default async function loginUser(req, res) {
   try {
@@ -11,6 +12,9 @@ export default async function loginUser(req, res) {
       return res
         .status(400)
         .json({ message: `Email and password are required!` });
+    }
+    if (req.body.user_email && !emailValidation(req.body.user_email) ) {
+      return res.status(400).json({ Error: "Email is failed"});
     }
     const user = await getUser({ user_email: user_email });
     if (!user) return res.sendStatus(401);
