@@ -5,7 +5,7 @@ import updaterSql from "../functions/updateSql.mjs"
 export default async function updateCar(req, res) {
   const { car_id } = req.body;
   const realOrder = await checkDataDB(car_id, "cars");
-  if (!realOrder)
+  if (!realOrder[0])
     return res
       .status(404)
       .json({ Error: `Can't find car with id = ${car_id}` });

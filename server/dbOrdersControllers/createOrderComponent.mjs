@@ -17,17 +17,17 @@ export default async function createOrder(req, res) {
 
   if (!car_id || !start_date || !end_date || !location_id) {
     return res.status(400).json({ Error: "There are some data missing" });
-  } else if (checkcar === false) {
+  } else if (!checkcar[0]) {
     console.log(`checkData is false`);
     return res.status(404).json({ Error: "Cannot find a car" });
-  } else if (checklocation === false) {
+  } else if (!checklocation) {
     return res.status(404).json({ Error: "Cannot find this location" });
   } else {
     const token = req.headers.authorization || req.headers.Authorization;
     const auth = jwt.decode(token, { complete: true });
     console.log({ auth });
     const user_id = auth.payload.user_id;
-    const price = await getPrice(req, res, car_id, start_date, end_date);
+    const price = await getPrice( res, car_id, start_date, end_date);
     if( typeof price === "object" ) return res.status(400).json(price)
     try {
       const params = [

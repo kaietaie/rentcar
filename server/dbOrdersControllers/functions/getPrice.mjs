@@ -1,6 +1,6 @@
 import { pool } from "../../dbConnectComponent.mjs";
 
-const getPrice = async (req, res, car_id, start_date, end_date) => {
+const getPrice = async ( res, car_id, start_date, end_date) => {
   try {
     const sql = `SELECT price FROM price WHERE car_id=$1;`;
     const car = await pool.query(sql, [car_id]);
