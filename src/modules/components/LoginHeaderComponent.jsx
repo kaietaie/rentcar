@@ -7,7 +7,6 @@ import Go from "./Go";
 
 function LoginHeaderComponent(auth) {
   const {setAuth, setPersist} = useContext(AuthContext);
-  const [buttonValue, setButtonValue] = useState('')
   const navigate = useNavigate();
   const [buttonValue, setButtonValue ] = useState ( "" )
   console.log(auth.authentication.authority[0])
