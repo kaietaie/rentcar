@@ -1,6 +1,6 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, {useRef, useState, useEffect} from "react";
 import axios from "../components/api/UserAPI";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import {Button, FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 
 const authorityList = {
@@ -23,6 +23,7 @@ const Register = () => {
   const [user_name, setUser_name] = useState("");
   const [user_surname, setUser_surname] = useState("");
   const [user_email, setUser_email] = useState("");
+  const [phone, setPhone] = useState("");
   const [valid_email, setValid_email] = useState(false);
 
   const [user_pass, setUser_pass] = useState("");
@@ -61,9 +62,9 @@ const Register = () => {
     try {
       await axios.post(
         REGISTER_URL,
-        JSON.stringify({ user_name, user_surname, user_email, user_pass, authority }),
+        JSON.stringify({user_name, user_surname, user_email, phone, user_pass, authority}),
         {
-          headers: { "Content-Type": "application/json" },
+          headers: {"Content-Type": "application/json"},
           withCredentials: true,
         }
       );
@@ -71,10 +72,11 @@ const Register = () => {
       setUser_name("");
       setUser_surname("");
       setUser_email("");
+      setPhone("");
       setUser_pass("");
       setMatch_pass("");
       setAuthority("");
-      navigate(from, { replace: true });
+      navigate(from, {replace: true});
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response");
@@ -89,102 +91,116 @@ const Register = () => {
 
   return (
     <main className="MainWrapper">
-    <section className='form-container'>
-      <p ref={errRef} className={errMsg ? "error-message" : "offscreen"}>
-        {errMsg}
-      </p>
-      <h1>Registration</h1>
-      <form className="form">
-        <TextField
-          required
-          inputRef={userRef}
-          label="Name"
-          id="user_name"
-          name="user_name"
-          type="text"
-          onChange={(e) => setUser_name(e.target.value)}
-          value={user_name}
-          margin="normal"
-          autoComplete="off"
-        />
-          <TextField
-          required
-          inputRef={userRef}
-          label="Surname"
-          id="user_surname"
-          name="user_surname"
-          type="text"
-          onChange={(e) => setUser_surname(e.target.value)}
-          value={user_surname}
-          margin="normal"
-          autoComplete="off"
-        />
-        <TextField
-          required
-          label="Email"
-          id="user_email"
-          name="email"
-          type="email"
-          onChange={(e) => setUser_email(e.target.value)}
-          value={user_email}
-          margin="normal"
-          autoComplete="off"
-          aria-invalid={valid_email ? "false" : "true"}
-        />
-        <TextField
-          required
-          label="Password"
-          type="password"
-          id="password"
-          onChange={(e) => setUser_pass(e.target.value)}
-          value={user_pass}
-          margin="normal"
-          aria-invalid={valid_pass ? "false" : "true"}
-        />
-        <TextField
-          required
-          label="Repeat your password"
-          type="password"
-          id="confirm_pwd"
-          onChange={(e) => setMatch_pass(e.target.value)}
-          value={match_pass}
-          margin="normal"
-          aria-invalid={valid_match ? "false" : "true"}
-        />
-        <FormControl margin="normal" fullWidth>
-          <InputLabel id="role-select-label">Role</InputLabel>
-          <Select
-            labelId="role-select-label"
-            id="role-select-label"
-            value={authority}
-            label="Роль"
-            onChange={handleChange}
-            required
+      <section className='form-container form-registration'>
+        <p ref={errRef} className={errMsg ? "error-message" : "offscreen"}>
+          {errMsg}
+        </p>
+        <h1>Registration</h1>
+        <form className="form">
+          <div className="form-inputs">
+            <TextField
+              required
+              inputRef={userRef}
+              label="Name"
+              id="user_name"
+              name="user_name"
+              type="text"
+              onChange={(e) => setUser_name(e.target.value)}
+              value={user_name}
+              margin="normal"
+              autoComplete="off"
+            />
+            <TextField
+              required
+              inputRef={userRef}
+              label="Surname"
+              id="user_surname"
+              name="user_surname"
+              type="text"
+              onChange={(e) => setUser_surname(e.target.value)}
+              value={user_surname}
+              margin="normal"
+              autoComplete="off"
+            />
+            <TextField
+              required
+              label="Email"
+              id="user_email"
+              name="email"
+              type="email"
+              onChange={(e) => setUser_email(e.target.value)}
+              value={user_email}
+              margin="normal"
+              autoComplete="off"
+              aria-invalid={valid_email ? "false" : "true"}
+            />
+            <TextField
+              required
+              label="Phone"
+              id="phone"
+              name="phone"
+              type="tel"
+              onChange={(e) => setPhone(e.target.value)}
+              value={phone}
+              margin="normal"
+              autoComplete="off"
+              // aria-invalid={valid_email ? "false" : "true"}
+            />
+            <TextField
+              required
+              label="Password"
+              type="password"
+              id="password"
+              onChange={(e) => setUser_pass(e.target.value)}
+              value={user_pass}
+              margin="normal"
+              aria-invalid={valid_pass ? "false" : "true"}
+            />
+            <TextField
+              required
+              label="Repeat your password"
+              type="password"
+              id="confirm_pwd"
+              onChange={(e) => setMatch_pass(e.target.value)}
+              value={match_pass}
+              margin="normal"
+              aria-invalid={valid_match ? "false" : "true"}
+            />
+          </div>
+          <FormControl margin="normal" fullWidth>
+            <InputLabel id="role-select-label">Role</InputLabel>
+            <Select
+              labelId="role-select-label"
+              id="role-select-label"
+              value={authority}
+              label="Роль"
+              onChange={handleChange}
+              required
+            >
+              <MenuItem value={authorityList.Admin}>Admin</MenuItem>
+              <MenuItem value={authorityList.Holder}>Holder</MenuItem>
+              <MenuItem value={authorityList.User}>User</MenuItem>
+            </Select>
+          </FormControl>
+          <Button
+            type="submit"
+            className="form-btn"
+            size="small"
+            variant="contained"
+            onClick={handleSubmit}
           >
-            <MenuItem value={authorityList.Admin}>Admin</MenuItem>
-            <MenuItem value={authorityList.Holder}>Holder</MenuItem>
-            <MenuItem value={authorityList.User}>User</MenuItem>
-          </Select>
-        </FormControl>
-        <Button
-          type="submit"
-          className="form-btn"
-          size="small"
-          variant="contained"
-          onClick={handleSubmit}
-        >
-          Sign Up
-        </Button>
-        {/* <button disabled={!valid_email || !valid_pass || !valid_match ? true : false}>Sign Up</button> */}
-      </form>
-      <p>
-        Already registered?
-        <br />
-        <span>
+            Sign Up
+          </Button>
+          {/* <button disabled={!valid_email || !valid_pass || !valid_match ? true : false}>Sign Up</button> */}
+        </form>
+        <p>
+          Already registered?
+          <br/>
+          <span>
           <Link to="/login">Sign In</Link>
         </span>
-      </p>
-    </section>
+        </p>
+      </section>
     </main>
   );
 };
