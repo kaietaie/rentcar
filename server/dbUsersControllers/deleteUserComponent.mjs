@@ -5,6 +5,7 @@ export default async function deleteUser(req, res) {
   try {
     const { user_email } = req.body;
     const user = await getUser({"user_email":user_email});
+    console.log(user)
     if (!user) {
       return res
         .status(400)
@@ -13,7 +14,7 @@ export default async function deleteUser(req, res) {
 
     const sql = "UPDATE Users SET enabled=false WHERE user_email= $1;";
     const deleteUser = await pool.query(sql, [user_email]);
-    if (deleteUser.command === "DELETE") res.json("User was deleted");
+    if (deleteUser.command === "UPDATE") res.json("User was deleted");
   } catch (error) {
     console.log(error);
     res.json({ message: "Something goes wrong!" });
