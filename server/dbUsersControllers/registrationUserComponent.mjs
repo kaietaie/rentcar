@@ -17,13 +17,12 @@ export default async function registrationUser(req, res) {
     }
     const { user_name, user_surname, user_email, phone, user_pass, authority } =
       req.body;
-    if (
-      req.body.user_name &&
-      !nameValidation(req.body.user_name) &&
-      req.body.user_surname &&
-      !nameValidation(req.body.user_surname)
-    ) {
-      return res.status(400).json({ Error: "Name or surname is failed" });
+    if (req.body.user_name && !nameValidation(req.body.user_name)) {
+      return res.status(400).json({ Error: "Name is failed" });
+    }
+
+    if (req.body.user_surname && !nameValidation(req.body.user_surname)) {
+      return res.status(400).json({ Error: "Surname is failed" });
     }
     if (req.body.user_email && !emailValidation(req.body.user_email)) {
       return res.status(400).json({ Error: "Email is failed" });
