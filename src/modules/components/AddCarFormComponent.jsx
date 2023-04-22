@@ -12,7 +12,7 @@ import {
   MenuItem,
   FormControl,
 } from "@mui/material";
-import createCar from "./dbConnect/CreateCarComponent";
+import createCar from "../";
 
 const AddCarForm = () => {
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import LoginComp from "../components/Login/LoginComp";
+import LoginComp from '../components/LoginComp';
 
 export default function Login() {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import LoginHeaderComponent from "./Login/LoginHeaderComponent";
+import LoginHeaderComponent from "./LoginHeaderComponent";
 import LogoutHeaderComponent from "./LogoutHeaderComponent";
 
 const LoginHeader = (auth, { isMobile }) => {
