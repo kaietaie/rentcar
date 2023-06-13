@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Car from './CarComponent.jsx';
+import Car from "./CarCardComponent.jsx";
 
 export default class ShowCard extends Component  {
   constructor(props) {
@@ -13,11 +13,8 @@ export default class ShowCard extends Component  {
 
     this.state = {
       search: {},
-      image: ""
     }
     this.search = { name: this.props.showCar };
-    this.image = `/images/${this.search.name}.png`;
-    
   }
   render() {
     
@@ -26,7 +23,7 @@ export default class ShowCard extends Component  {
       <CardMedia
         component="img"
         height="140"
-        image={this.image}
+        image={require(`../../../images/${this.search.name}.png`)}
         alt="car rent"
       />
       <CardContent>
@@ -38,7 +35,7 @@ export default class ShowCard extends Component  {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="midle" variant="contained">ЗАБРОНИРОВАТЬ</Button>
+        <Button size="midle" variant="contained">ЗАБРОНЮВАТИ</Button>
       </CardActions>
     </Card>
   );

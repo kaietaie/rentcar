@@ -1,6 +1,6 @@
 import React from 'react';
 import MainCarousel from "../components/Carousel";
-import ShowCard from "../components/ShowCard";
+import ShowCard from "../components/CarCards/ShowCard";
 import MapRend from "../map/Map";
 import useScreen from "../hooks/useScreen";
 

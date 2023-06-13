@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import AddCarForm from "../components/AddCarFormComponent";
 
 function Admin() {
   return (
-    <div>Admin</div>
-  )
+    <div className="MainWrapper">
+      <h1>Adding cars to Database</h1>
+      <div className="carAddAdmin">
+        <AddCarForm />
+      </div>
+    </div>
+  );
 }
 
-export default Admin
+export default Admin;

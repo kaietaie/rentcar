@@ -9,6 +9,7 @@ export default function Contacts() {
           Our offices located:
         </div>
         list of offices from DB
+
       </main>
     </div>
   );
