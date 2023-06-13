@@ -1,6 +1,6 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, {useRef, useState, useEffect} from "react";
 import axios from "../components/api/UserAPI";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import {Button, FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 
 const authorityList = {
@@ -20,15 +20,17 @@ const Register = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/user-page";
 
-  const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [validEmail, setValidEmail] = useState(false);
+  const [user_name, setUser_name] = useState("");
+  const [user_surname, setUser_surname] = useState("");
+  const [user_email, setUser_email] = useState("");
+  const [phone, setPhone] = useState("");
+  const [valid_email, setValid_email] = useState(false);
 
-  const [userPass, setUserPass] = useState("");
-  const [validPass, setValidPass] = useState(false);
+  const [user_pass, setUser_pass] = useState("");
+  const [valid_pass, setValid_pass] = useState(false);
 
-  const [matchPass, setMatchPass] = useState("");
-  const [validMatch, setValidMatch] = useState(false);
+  const [match_pass, setMatch_pass] = useState("");
+  const [valid_match, setValid_match] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
   const [authority, setAuthority] = React.useState("");
@@ -42,17 +44,17 @@ const Register = () => {
   }, []);
 
   useEffect(() => {
-    setValidEmail(EMAIL_REGEX.test(userEmail));
-  }, [userEmail]);
+    setValid_email(EMAIL_REGEX.test(user_email));
+  }, [user_email]);
 
   useEffect(() => {
-    setValidPass(PASS_REGEX.test(userPass));
-    setValidMatch(userPass === matchPass);
-  }, [userPass, matchPass]);
+    setValid_pass(PASS_REGEX.test(user_pass));
+    setValid_match(user_pass === match_pass);
+  }, [user_pass, match_pass]);
 
   useEffect(() => {
     setErrMsg("");
-  }, [userEmail, userPass, matchPass]);
+  }, [user_email, user_pass, match_pass]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -60,24 +62,26 @@ const Register = () => {
     try {
       await axios.post(
         REGISTER_URL,
-        JSON.stringify({ userName, userEmail, userPass, authority }),
+        JSON.stringify({user_name, user_surname, user_email, phone, user_pass, authority}),
         {
-          headers: { "Content-Type": "application/json" },
+          headers: {"Content-Type": "application/json"},
           withCredentials: true,
         }
       );
       //clear state and controlled inputs
-      setUserName("");
-      setUserEmail("");
-      setUserPass("");
-      setMatchPass("");
+      setUser_name("");
+      setUser_surname("");
+      setUser_email("");
+      setPhone("");
+      setUser_pass("");
+      setMatch_pass("");
       setAuthority("");
-      navigate(from, { replace: true });
+      navigate(from, {replace: true});
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response");
       } else if (err.response?.status === 409) {
-        setErrMsg("Username Taken");
+        setErrMsg("user_name Taken");
       } else {
         setErrMsg("Registration Failed");
       }
@@ -86,90 +90,118 @@ const Register = () => {
   };
 
   return (
-    <section className='form-container'>
-      <p ref={errRef} className={errMsg ? "error-message" : "offscreen"}>
-        {errMsg}
-      </p>
-      <h1>Register</h1>
-      <form className="form">
-        <TextField
-          required
-          inputRef={userRef}
-          label="Ім'я"
-          id="userName"
-          name="userName"
-          type="text"
-          onChange={(e) => setUserName(e.target.value)}
-          value={userName}
-          margin="normal"
-          autoComplete="off"
-        />
-        <TextField
-          required
-          label="Ел. пошта"
-          id="userEmail"
-          name="email"
-          type="email"
-          onChange={(e) => setUserEmail(e.target.value)}
-          value={userEmail}
-          margin="normal"
-          autoComplete="off"
-          aria-invalid={validEmail ? "false" : "true"}
-        />
-        <TextField
-          required
-          label="Пароль"
-          type="password"
-          id="password"
-          onChange={(e) => setUserPass(e.target.value)}
-          value={userPass}
-          margin="normal"
-          aria-invalid={validPass ? "false" : "true"}
-        />
-        <TextField
-          required
-          label="Підтвердіть пароль"
-          type="password"
-          id="confirm_pwd"
-          onChange={(e) => setMatchPass(e.target.value)}
-          value={matchPass}
-          margin="normal"
-          aria-invalid={validMatch ? "false" : "true"}
-        />
-        <FormControl margin="normal" fullWidth>
-          <InputLabel id="role-select-label">Роль</InputLabel>
-          <Select
-            labelId="role-select-label"
-            id="role-select-label"
-            value={authority}
-            label="Роль"
-            onChange={handleChange}
-            required
+    <main className="MainWrapper">
+      <section className='form-container form-registration'>
+        <p ref={errRef} className={errMsg ? "error-message" : "offscreen"}>
+          {errMsg}
+        </p>
+        <h1>Registration</h1>
+        <form className="form">
+          <div className="form-inputs">
+            <TextField
+              required
+              inputRef={userRef}
+              label="Name"
+              id="user_name"
+              name="user_name"
+              type="text"
+              onChange={(e) => setUser_name(e.target.value)}
+              value={user_name}
+              margin="normal"
+              autoComplete="off"
+            />
+            <TextField
+              required
+              inputRef={userRef}
+              label="Surname"
+              id="user_surname"
+              name="user_surname"
+              type="text"
+              onChange={(e) => setUser_surname(e.target.value)}
+              value={user_surname}
+              margin="normal"
+              autoComplete="off"
+            />
+            <TextField
+              required
+              label="Email"
+              id="user_email"
+              name="email"
+              type="email"
+              onChange={(e) => setUser_email(e.target.value)}
+              value={user_email}
+              margin="normal"
+              autoComplete="off"
+              aria-invalid={valid_email ? "false" : "true"}
+            />
+            <TextField
+              required
+              label="Phone"
+              id="phone"
+              name="phone"
+              type="tel"
+              onChange={(e) => setPhone(e.target.value)}
+              value={phone}
+              margin="normal"
+              autoComplete="off"
+              // aria-invalid={valid_email ? "false" : "true"}
+            />
+            <TextField
+              required
+              label="Password"
+              type="password"
+              id="password"
+              onChange={(e) => setUser_pass(e.target.value)}
+              value={user_pass}
+              margin="normal"
+              aria-invalid={valid_pass ? "false" : "true"}
+            />
+            <TextField
+              required
+              label="Repeat your password"
+              type="password"
+              id="confirm_pwd"
+              onChange={(e) => setMatch_pass(e.target.value)}
+              value={match_pass}
+              margin="normal"
+              aria-invalid={valid_match ? "false" : "true"}
+            />
+          </div>
+          <FormControl margin="normal" fullWidth>
+            <InputLabel id="role-select-label">Role</InputLabel>
+            <Select
+              labelId="role-select-label"
+              id="role-select-label"
+              value={authority}
+              label="Роль"
+              onChange={handleChange}
+              required
+            >
+              <MenuItem value={authorityList.Admin}>Admin</MenuItem>
+              <MenuItem value={authorityList.Holder}>Holder</MenuItem>
+              <MenuItem value={authorityList.User}>User</MenuItem>
+            </Select>
+          </FormControl>
+          <Button
+            type="submit"
+            className="form-btn"
+            size="small"
+            variant="contained"
+            onClick={handleSubmit}
           >
-            <MenuItem value={authorityList.Admin}>Admin</MenuItem>
-            <MenuItem value={authorityList.Holder}>Holder</MenuItem>
-            <MenuItem value={authorityList.User}>User</MenuItem>
-          </Select>
-        </FormControl>
-        <Button
-          type="submit"
-          className="form-btn"
-          size="small"
-          variant="contained"
-          onClick={handleSubmit}
-        >
-          Sign Up
-        </Button>
-        {/* <button disabled={!validEmail || !validPass || !validMatch ? true : false}>Sign Up</button> */}
-      </form>
-      <p>
-        Already registered?
-        <br />
-        <span>
+            Sign Up
+          </Button>
+          {/* <button disabled={!valid_email || !valid_pass || !valid_match ? true : false}>Sign Up</button> */}
+        </form>
+        <p>
+          Already registered?
+          <br/>
+          <span>
           <Link to="/login">Sign In</Link>
         </span>
-      </p>
-    </section>
+        </p>
+      </section>
+    </main>
   );
 };
 

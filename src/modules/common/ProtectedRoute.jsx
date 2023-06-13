@@ -4,7 +4,15 @@ import useAuth from "../hooks/useAuth";
 const ProtectedRoute = ({ allowedAuthority }) => {
   const { auth } = useAuth();
   const location = useLocation();
-
+  return  auth?.authority 
+    ? allowedAuthority.some((allAu) => auth.authority.includes(allAu)) 
+    ? <Outlet />  
+    : <Navigate to="unauthorized" state={{ from: location }} replace />
+    : <Navigate to="login" state={{ from: location }} replace />
+    
+  };
+  
+  export default ProtectedRoute;
 //   return (
 //     auth?.authority.find(role => allowedAuthority?.includes(role))
 //         ? <Outlet />
@@ -13,12 +21,3 @@ const ProtectedRoute = ({ allowedAuthority }) => {
 //             : <Navigate to="/login" state={{ from: location }} replace />
 // );
 //   }
-  return  auth?.authority 
-    ? allowedAuthority.some((allAu) => auth.authority.includes(allAu)) 
-    ? <Outlet />  
-    : <Navigate to="unauthorized" state={{ from: location }} replace />
-    : <Navigate to="login" state={{ from: location }} replace />
-    
-};
-
-export default ProtectedRoute;

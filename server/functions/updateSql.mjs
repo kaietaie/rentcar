@@ -1,4 +1,4 @@
-export default function updaterSql(keys, values) {
+export default function updaterSql(keys, values, table) {
   let str = "",
     query,
     val;
@@ -9,5 +9,5 @@ export default function updaterSql(keys, values) {
     str += `${keys[i]} = ${val},`;
     if (i === keys.length - 1) query = str.slice(0, -1);
   }
-  return `UPDATE Cars SET ${query} WHERE ${keys[0]} = '${values[0]}';`;
+  return `UPDATE ${table} SET ${query} WHERE ${keys[0]} = '${values[0]}';`;
 }

@@ -6,6 +6,7 @@ import { carsRouter } from "./routes/cars.routes.mjs";
 import { authRouter } from "./routes/auth.routes.mjs";
 import { refreshRouter } from "./routes/refresh.routes.mjs";
 import { logoutRouter } from "./routes/logout.routes.mjs";
+import { orderRouter } from "./routes/order.routes.mjs";
 import corsConfig from "./CORS/corsConfig.js";
 import credentials from './middleware/credentials.js';
 
@@ -28,6 +29,7 @@ app.use('/apicars', carsRouter);
 app.use('/auth', authRouter);
 app.use('/refresh', refreshRouter);
 app.use('/logout', logoutRouter );
+app.use('/order', orderRouter );
 
 app.listen(port, () => {
   console.log(`Server is working on ${host}:${port}`);

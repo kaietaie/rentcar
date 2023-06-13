@@ -35,20 +35,20 @@ export default function App() {
               <Route path="login" element={<Login />} />
               <Route path="registration" element={<Register />} />
               <Route path="unauthorized" element={<Unauthorized />} />
-              <Route element={<ProtectedRoute allowedAuthority={["2001"]} />}>
+              <Route element={<ProtectedRoute allowedAuthority={[2001]} />}>
                 <Route path="user-page" element={<Client />} />
               </Route>
-              <Route element={<ProtectedRoute allowedAuthority={["5150"]} />}>
+              <Route element={<ProtectedRoute allowedAuthority={[5150]} />}>
                 <Route path="/admin-panel" element={<Admin />} />
               </Route>
               <Route
                 element={
-                  <ProtectedRoute allowedAuthority={["2001", "1984", "5150"]} />
+                  <ProtectedRoute allowedAuthority={[2001, 1984, 5150]} />
                 }
               >
                 <Route path="feedback" element={<Feedback />} />
               </Route>
-              <Route element={<ProtectedRoute allowedAuthority={["1984"]} />}>
+              <Route element={<ProtectedRoute allowedAuthority={[1984]} />}>
                 <Route path="holder-page" element={<Holder />} />
               </Route>
             </Route>
